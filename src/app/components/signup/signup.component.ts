@@ -30,6 +30,7 @@ export class SignupComponent implements OnInit {
       email: new FormControl(),
       password: new FormControl()
     });
+    
       }
 
   onSubmit() {
