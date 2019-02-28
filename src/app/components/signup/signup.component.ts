@@ -30,7 +30,6 @@ export class SignupComponent implements OnInit {
       email: new FormControl(),
       password: new FormControl()
     });
-    
       }
 
   onSubmit() {
@@ -38,7 +37,7 @@ export class SignupComponent implements OnInit {
       console.log('Form Valid!');
       console.log(this.signupForm.value);
     } else {
-      console.log('INVALID FORM REEEEEEEE')
+      console.log('INVALID FORM REEEEEEEE');
     }
   }
 
