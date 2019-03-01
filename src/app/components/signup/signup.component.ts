@@ -23,7 +23,7 @@ export class SignupComponent implements OnInit {
       firstName: new FormControl(),
       lastName: new FormControl(),
       streetName: new FormControl(),
-      streetNum: new FormControl(),
+      streetNumber: new FormControl(),
       city: new FormControl(),
       country: new FormControl(),
       zipcode: new FormControl(),

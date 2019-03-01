@@ -1,57 +1,57 @@
 <div>
   <h2>Signup</h2>
 
-  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
+  <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="form-group">
       <label for="firstName">First Name:</label>
-      <input class="form-control" id="firstName" type="text" name="firstName" formControlName="firstName" required>
+      <input class="form-control" id="firstName" type="text" name="firstName" formControlName="firstName" placeholder="Jane" required>
     </div>
 
     <div class="form-group">
       <label for="lastName">Last Name:</label>
-      <input class="form-control" id="lastName" type="text" name="lastName" formControlName="lastName" required>
+      <input class="form-control" id="lastName" type="text" name="lastName" formControlName="lastName" placeholder="Doe" required>
     </div>
 
     <div class="form-group">
       <label for="email">Email:</label>
-      <input class="form-control" id="email" type="text" name="email" formControlName="email" required>
+      <input class="form-control" id="email" type="text" name="email" formControlName="email" placeholder="name@example.com" required>
     </div>
 
     <div class="form-group">
       <label for="streetName">Street Name:</label>
-      <input class="form-control" id="streetName" type="text" name="streetName" formControlName="streetName" required>
+      <input class="form-control" id="streetName" type="text" name="streetName" formControlName="Street Name" placeholder="Fake Street" required>
     </div>
 
     <div class="form-group">
       <label for="streetNumber">Street Number:</label>
-      <input class="form-control" id="streetNumber" type="number" name="streetNumber" formControlName="streetNumber"
-        required>
+      <input class="form-control" id="streetNumber" type="number" name="streetNumer" formControlName="streetNumber" placeholder="123" required>
     </div>
 
     <div class="form-group">
       <label for="city">City:</label>
-      <input class="form-control" id="city" type="text" name="city" formControlName="city" required>
+      <input class="form-control" id="city" type="text" name="city" formControlName="city" placeholder="Springfield" required>
     </div>
 
     <div class="form-group">
-      <label for="country">Country:</label>
-      <input class="form-control" id="country" type="text" name="country" formControlName="country" required>
+      <!--
+        <label for="country">Country</label>
+      <input class="form-control" id="country" type="text" name="country" formControlName="country" placeholder="United States" required>
+      -->
+      <select class="selectpicker countrypicker">CountrySelect</select>
     </div>
 
     <div class="form-group">
       <label for="zipcode">Postal/Zip Code:</label>
-      <input class="zipcode" id="zipcode" type="number" name="zipcode" formControlName="zipcode" required>
+      <input class="zipcode" id="zipcode" type="number" name="zipcode" formControlName="zipcode" placeholder="37188" required>
     </div>
 
     <div class="form-group">
       <label for="password">Password:</label>
-      <input class="form-control" id="password" type="password" name="password" formControlName="password" required>
+      <input class="form-control" id="password" type="password" name="password" formControlName="password" placeholder="Password" required>
     </div>
 
     <div class="form-group">
       <a class="btn btn-primary" href="" role="button">Next-></a>
     </div>
-
-    <!-- <pre>{{loginForm.value | json}}</pre> -->
   </form>
 </div>

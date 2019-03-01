@@ -1,7 +1,7 @@
 <div>
   <h2>Login</h2>
 
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="form-group">
       <label for="email">Email:</label>
       <input class="form-control" id="email" type="text" name="email" formControlName="email" required>
@@ -15,6 +15,5 @@
     <div class="form-group">
       <input class="btn btn-primary" type="submit" value="Submit">
     </div>
-    <!-- <pre>{{loginForm.value | json}}</pre> -->
   </form>
 </div>
