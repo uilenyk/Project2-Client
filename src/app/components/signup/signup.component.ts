@@ -22,9 +22,9 @@ export class SignupComponent implements OnInit {
     this.signupForm = new FormGroup({
       firstName: new FormControl(),
       lastName: new FormControl(),
-      streetName: new FormControl(),
-      streetNumber: new FormControl(),
+      address: new FormControl(),
       city: new FormControl(),
+      state: new FormControl(),
       country: new FormControl(),
       zipcode: new FormControl(),
       email: new FormControl(),
