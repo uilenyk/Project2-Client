@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { RestAPIService } from './rest-api.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class LoginService {
 
-  constructor() { }
+    constructor(private restAPIService: RestAPIService) { }
 
-  login(formData: any) {
-    console.log('Post Request To Login!' + formData);
-  }
+    login(formData: any): Observable<any> {
+        console.log('Post Request To Login EndPoint! ' + formData);
+        return this.restAPIService.loginEndPoint(formData);
+    }
 
 }
