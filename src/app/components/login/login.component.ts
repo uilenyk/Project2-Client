@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { allocExpando } from '@angular/core/src/render3/instructions';
-import { NgIf } from '@angular/common';
-import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { LoginService } from '../../services/login-service.service';
 import { MarketPlaceUserDataService } from '../../services/market-place-user-data.service';
@@ -18,9 +14,10 @@ import { MarketPlaceUser } from '../../models/market-place-user';
 })
 export class LoginComponent implements OnInit {
 
-    private loginForm: FormGroup;
+    loginForm: FormGroup;
 
     constructor(
+        private router: Router,
         private loginService: LoginService,
         private marketPlaceUserDataService: MarketPlaceUserDataService) { }
 
@@ -29,14 +26,17 @@ export class LoginComponent implements OnInit {
     }
 
     onSubmit() {
-        const formData = this.loginForm.value;
-        if (formData.valid) {
-            this.loginService.login(formData).subscribe(
+        const form = this.loginForm;
+        if (form.valid) {
+            /**
+             * Fetch user from the database
+             */
+            const userData = form.value;
+            this.loginService.login(userData).subscribe(
                 (response) => {
-                    const marketPlaceUser = response;
-                    this.setMarketPlaceUser(marketPlaceUser);
-                });
-        } else {
+                    console.log(response);
+            });
+         } else {
             console.log('Invalid Form!');
         }
     }

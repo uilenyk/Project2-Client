@@ -14,14 +14,16 @@ export class RestAPIService {
     */
     private END_POINTS = {
         GET: { },
-        POST: { loginURL: this.testURL },
+        POST: {
+            loginURL: this.testURL
+        },
         PUT: { }
     };
 
     constructor(private httpClient: HttpClient) { }
 
-    loginEndPoint(formData: any) {
+    loginEndPoint(userData: any) {
         const url = this.END_POINTS.POST.loginURL;
-        return this.httpClient.post(url, formData);
+        return this.httpClient.post(url, userData);
     }
 }
