@@ -5,41 +5,37 @@ import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angula
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-@Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
+import { LoginService } from '../../services/login-service.service';
 
+@Component({
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
+})
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+    private loginForm: FormGroup;
 
-  workingEmail: string;
-  workingPassword: string;
+    constructor(private loginService: LoginService) { }
 
-  constructor() { }
-
-  ngOnInit() {
-
-    this.loginForm = new FormGroup({
-      email: new FormControl(),
-      password: new FormControl()
-    });
-    this.workingEmail = 'abby@aol.com';
-    this.workingPassword = 'abby123password';
-  }
-
-  onSubmit() {
-    if (this.loginForm.valid) {
-      console.log('Form Valid!');
-      console.log(this.loginForm.value);
-    } else {
-      console.log('INVALID FORM REEEEEEEE')
+    ngOnInit() {
+        this.loginForm = this.createLoginForm();
     }
-  }
 
-  login() {
-    console.log(this.loginForm);
-  }
+    onSubmit() {
+        if (this.loginForm.valid) {
+            const formData = this.loginForm.value;
+            this.loginService.login(formData);
+        } else {
+            console.log('Invalid Form!');
+        }
+    }
+
+    private createLoginForm(): FormGroup {
+        return new FormGroup({
+            email: new FormControl(),
+            password: new FormControl()
+        });
+    }
+
 }
