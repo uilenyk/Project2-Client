@@ -19,7 +19,7 @@ import { LandingComponent } from './components/landing/landing.component';
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
