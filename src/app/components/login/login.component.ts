@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { allocExpando } from '@angular/core/src/render3/instructions';
 import { NgIf } from '@angular/common';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-=======
-import { FormGroup, FormControl, Validators } from '@angular/forms';
->>>>>>> 363b0c7f28285acef0ef8b8d2318a0f50c54ba08
 
 import { LoginService } from '../../services/login-service.service';
 import { MarketPlaceUserDataService } from '../../services/market-place-user-data.service';
