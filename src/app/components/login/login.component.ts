@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { allocExpando } from '@angular/core/src/render3/instructions';
-import { NgIf } from '@angular/common';
-import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { LoginService } from '../../services/login-service.service';
+import { MarketPlaceUserDataService } from '../../services/market-place-user-data.service';
+
+import { MarketPlaceUser } from '../../models/market-place-user';
 
 @Component({
     selector: 'app-login',
@@ -16,16 +15,22 @@ export class LoginComponent implements OnInit {
 
     private loginForm: FormGroup;
 
-    constructor(private loginService: LoginService) { }
+    constructor(
+        private loginService: LoginService,
+        private marketPlaceUserDataService: MarketPlaceUserDataService) { }
 
     ngOnInit() {
         this.loginForm = this.createLoginForm();
     }
 
     onSubmit() {
-        if (this.loginForm.valid) {
-            const formData = this.loginForm.value;
-            this.loginService.login(formData);
+        const formData = this.loginForm.value;
+        if (formData.valid) {
+            this.loginService.login(formData).subscribe(
+                (response) => {
+                    const marketPlaceUser = response;
+                    this.setMarketPlaceUser(marketPlaceUser);
+                });
         } else {
             console.log('Invalid Form!');
         }
@@ -36,6 +41,10 @@ export class LoginComponent implements OnInit {
             email: new FormControl(),
             password: new FormControl()
         });
+    }
+
+    private setMarketPlaceUser(marketPlaceUser: MarketPlaceUser) {
+        this.marketPlaceUserDataService.changeMarketPlaceUser(marketPlaceUser);
     }
 
 }

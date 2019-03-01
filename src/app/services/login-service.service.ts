@@ -10,7 +10,7 @@ export class LoginService {
     constructor(private restAPIService: RestAPIService) { }
 
     login(formData: any): Observable<any> {
-        console.log('Post Request To Login EndPoint! ' + formData.email);
+        console.log('Post Request To Login EndPoint! ' + formData);
         return this.restAPIService.loginEndPoint(formData);
     }
 

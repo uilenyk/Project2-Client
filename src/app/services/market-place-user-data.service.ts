@@ -8,8 +8,8 @@ import { MarketPlaceUser } from '../models/market-place-user';
 })
 export class MarketPlaceUserDataService {
 
-    private marketPlaceUserDataSource
-        = new BehaviorSubject<MarketPlaceUser>(null);
+    private marketPlaceUserDataSource = new BehaviorSubject<MarketPlaceUser>(null);
+    currentMarketPlaceUser = this.marketPlaceUserDataSource.asObservable();
 
     constructor() { }
 
