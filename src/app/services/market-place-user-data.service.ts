@@ -16,4 +16,5 @@ export class MarketPlaceUserDataService {
     changeMarketPlaceUser(marketPlaceUser: MarketPlaceUser) {
         this.marketPlaceUserDataSource.next(marketPlaceUser);
     }
+
 }
