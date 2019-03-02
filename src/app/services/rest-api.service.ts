@@ -14,9 +14,7 @@ export class RestAPIService {
     */
     private END_POINTS = {
         GET: { },
-        POST: {
-            loginURL: this.testURL
-        },
+        POST: { loginURL: this.testURL + 'users/login'},
         PUT: { }
     };
 
