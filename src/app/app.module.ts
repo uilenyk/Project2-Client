@@ -9,13 +9,20 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { MarketPageComponent } from './components/market-page/market-page.component';
+import { ListingComponent } from './components/listing/listing.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    LandingComponent
+    LandingComponent,
+    MarketPageComponent,
+    ListingComponent,
+    NavbarComponent
   ],
   imports: [
     FormsModule,
@@ -25,7 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     NgbModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
