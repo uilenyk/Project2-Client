@@ -32,11 +32,12 @@ export class LoginComponent implements OnInit {
              * Fetch user from the database
              */
             const userData = form.value;
+            console.log(form.value);
             this.loginService.login(userData).subscribe(
                 (response) => {
                     console.log(response);
-            });
-         } else {
+                });
+        } else {
             console.log('Invalid Form!');
         }
     }
@@ -44,7 +45,8 @@ export class LoginComponent implements OnInit {
     private createLoginForm(): FormGroup {
         return new FormGroup({
             email: new FormControl(),
-            password: new FormControl()
+            password: new FormControl(),
+            rememberMe: new FormControl()
         });
     }
 
