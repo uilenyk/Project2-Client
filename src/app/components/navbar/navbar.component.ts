@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MarketPlaceUser } from 'src/app/models/market-place-user';
 import { MarketPlaceUserDataService } from 'src/app/services/market-place-user-data.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,16 @@ export class NavbarComponent implements OnInit {
   username: any;
   marketPlaceUser: MarketPlaceUser;
   constructor(private marketPlaceDataService: MarketPlaceUserDataService,
-              private cookie: CookieService) {
+              private cookie: CookieService,
+              private router: Router) {
+
+  }
+
+  signOut()
+  {
+    this.cookie.deleteAll();
+    this.router.navigateByUrl('');
+    window.location.reload();
 
   }
 
@@ -29,6 +39,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.showSignIn = true;
+    this.showSignInView = false;
+    this.username;
     this.marketPlaceDataService.currentMarketPlaceUser.subscribe(
       (marketPlaceUser) => {
         this.marketPlaceUser = marketPlaceUser;

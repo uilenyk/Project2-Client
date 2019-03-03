@@ -9,10 +9,10 @@
           </a>
           
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="listings">Listings</a>
+            <a class="dropdown-item" href="listings">Your Listings</a>
             <a class="dropdown-item" href="#">Add Listing</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Friends</a>
           </div>
         </li>
       </ul>
@@ -22,11 +22,14 @@
       </form>
     </div>
     <ul class="navbar-nav mr-auto">
+        <li *ngIf="!showSignIn" class="nav-item active">
+            <button (click)="signOut()" name="button" class="btn login_btn">Sign Out</button>
+            </li>
       <li *ngIf="showSignIn" class="nav-item active">
       <button (click)="signIn()" name="button" class="btn login_btn">Sign In</button>
       </li>
       <li *ngIf="showSignIn" class="nav-item active">
-        <a class="nav-link" href="signup">Sign Up</a>
+      <button href="signup" name="button" class="btn login_btn">Sign Up</button>
       </li>
     </ul>
   </nav>
