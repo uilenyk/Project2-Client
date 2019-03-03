@@ -14,4 +14,10 @@ export class LoginService {
         return this.restAPIService.loginEndPoint(formData);
     }
 
+    signUp(formData: any): Observable<any> {
+        console.log('Post Request To Login EndPoint! ' + formData);
+        return this.restAPIService.signUpEndPoint(formData);
+    }
+
+
 }

@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
     @Output()
-    showSignEvent = new EventEmitter<boolean>();
+    showSignEvent = new EventEmitter<object>();
     showSignIn = true;
     private loginForm: FormGroup;
 
@@ -45,19 +45,13 @@ export class LoginComponent implements OnInit {
                     const marketPlaceUser = response;
                     this.setMarketPlaceUser(marketPlaceUser);
                     this.showSignIn = false;
-                    this.showSignEvent.emit(this.showSignIn);
-                    this.cookie.set('address' , response.address);
-                    this.cookie.set('balance' , response.balance);
-                    this.cookie.set('email' , response.email);
-                    this.cookie.set('firstName' , response.firstName);
-                    this.cookie.set('id' , response.id);
-                    this.cookie.set('password' , response.password);
-                    this.cookie.set('username' , response.username);
-                    this.cookie.set('phoneNumber' , response.phoneNumber);
+                    this.showSignEvent.emit({showSignIn: this.showSignIn, firstname: response.firstname});
+                    this.cookie.set('firstname' , response.firstname);
+                    this.cookie.set('mpuid' , response.id);
                     this.router.navigateByUrl('marketPage');
                 });
         } else {
-            console.log('Invalid Form!');
+            alert("Invalid form!");
         }
     }
 

@@ -11,25 +11,33 @@ import { CookieService } from 'ngx-cookie-service';
 export class NavbarComponent implements OnInit {
 
   showSignIn = true;
-  username = this.cookie.get('username');
+  showSignInView = false;
+  username: any;
   marketPlaceUser: MarketPlaceUser;
   constructor(private marketPlaceDataService: MarketPlaceUserDataService,
               private cookie: CookieService) {
 
   }
 
- ngOnChange(){
-  this.username = this.cookie.get('username');
- }
+  signIn(){
+      if(this.showSignInView == false) {
+      this.showSignInView = true;
+      }
+      else {
+        this.showSignInView = false;
+      }
+  }
+
   ngOnInit() {
-    this.username = this.cookie.get('username');
     this.marketPlaceDataService.currentMarketPlaceUser.subscribe(
       (marketPlaceUser) => {
         this.marketPlaceUser = marketPlaceUser;
       });
   }
 
-  recieveShowSignInEvent($event) {
-    this.showSignIn = $event;
+  recieveShowSignInEvent(object) {
+    this.showSignIn = object.showSignIn;
+    this.showSignInView = false;
+    this.username = object.firstname;
   }
 }
