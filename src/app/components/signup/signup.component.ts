@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-        private router: Router) { }
+    private router: Router) { }
 
   ngOnInit() {
 

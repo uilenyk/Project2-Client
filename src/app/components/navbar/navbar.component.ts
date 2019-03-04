@@ -21,6 +21,15 @@ export class NavbarComponent implements OnInit {
 
   }
 
+  loadHomePage(){
+    this.router.navigateByUrl('');
+  }
+  loadUserListings(){
+    this.router.navigateByUrl('userlistings');
+  }
+  signUp(){
+    this.router.navigateByUrl('signUp');
+  }
   signOut()
   {
     this.cookie.deleteAll();
@@ -39,9 +48,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.showSignIn = true;
-    this.showSignInView = false;
-    this.username;
+    this.cookie.deleteAll();
     this.marketPlaceDataService.currentMarketPlaceUser.subscribe(
       (marketPlaceUser) => {
         this.marketPlaceUser = marketPlaceUser;

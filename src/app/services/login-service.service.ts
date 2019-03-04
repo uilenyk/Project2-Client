@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RestAPIService } from './rest-api.service';
+import { MarketPlaceUser } from '../models/market-place-user';
 
 @Injectable({
     providedIn: 'root'
@@ -9,15 +10,11 @@ export class LoginService {
 
     constructor(private restAPIService: RestAPIService) { }
 
-    login(formData: any): Observable<any> {
-        console.log('Post Request To Login EndPoint! ' + formData);
-        return this.restAPIService.loginEndPoint(formData);
+    login(userData: any): Observable<any> {
+        return this.restAPIService.loginEndPoint(userData);
     }
 
-    signUp(formData: any): Observable<any> {
-        console.log('Post Request To Login EndPoint! ' + formData);
+    signUp(formData: any) {
         return this.restAPIService.signUpEndPoint(formData);
     }
-
-
 }

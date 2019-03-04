@@ -20,14 +20,30 @@ export class RestAPIService {
 
     private SIGNUP_END_POINTS = {
         GET: { },
-        POST: { loginURL: this.apiURL + '/unknown/signup'},
+        POST: { signupURL: this.apiURL + '/unknown/signup'},
+        PUT: { }
+    };
+
+    private LISTING_END_POINTS = {
+        GET: {listingURL: this.apiURL + '/listings'},
+        POST: {},
         PUT: { }
     };
 
     constructor(private httpClient: HttpClient) { }
 
+    getListingsEndPoint(id: any) {
+        const url = `${environment.apiUrl}/market-place-users/${id}/listings`;
+        return this.httpClient.get(url);
+      }
+
+    addListing(formData: any) {
+        const url = `${environment.apiUrl}/listings`;
+        return this.httpClient.post(url, formData);
+    }
+
     signUpEndPoint(formData: any) {
-    const url = this.SIGNUP_END_POINTS.POST.loginURL;
+    const url = this.SIGNUP_END_POINTS.POST.signupURL;
     return this.httpClient.post(url, formData);
     }
 
@@ -35,4 +51,5 @@ export class RestAPIService {
         const url = this.LOGIN_END_POINTS.POST.loginURL;
         return this.httpClient.post(url, formData);
     }
+
 }
