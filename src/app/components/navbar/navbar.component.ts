@@ -16,35 +16,37 @@ export class NavbarComponent implements OnInit {
   username: any;
   marketPlaceUser: MarketPlaceUser;
   constructor(private marketPlaceDataService: MarketPlaceUserDataService,
-              private cookie: CookieService,
-              private router: Router) {
+    private cookie: CookieService,
+    private router: Router) {
 
   }
-
-  loadHomePage(){
-    this.router.navigateByUrl('');
-  }
-  loadUserListings(){
+  addListing() {
     this.router.navigateByUrl('userlistings');
   }
-  signUp(){
+
+  loadHomePage() {
+    this.router.navigateByUrl('');
+  }
+  loadUserListings() {
+    this.router.navigateByUrl('userlistings');
+  }
+  signUp() {
     this.router.navigateByUrl('signUp');
   }
-  signOut()
-  {
+  signOut() {
     this.cookie.deleteAll();
     this.router.navigateByUrl('');
     window.location.reload();
 
   }
 
-  signIn(){
-      if(this.showSignInView == false) {
+  signIn() {
+    if (this.showSignInView == false) {
       this.showSignInView = true;
-      }
-      else {
-        this.showSignInView = false;
-      }
+    }
+    else {
+      this.showSignInView = false;
+    }
   }
 
   ngOnInit() {
