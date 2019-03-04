@@ -1,0 +1,20 @@
+.btnSize{
+    font-size: 20px;
+    border-radius: 12px !important;
+  }
+  .homeBtnSize{
+    font-size: 30px;
+  }
+
+  .align {
+    float: left;
+    margin: auto;
+  }
+
+  .btnBorder{
+    margin-top: 7px;
+    margin-left: 10px;
+    padding: 25px;
+    border-radius: 12px;
+    background-color: seashell;
+  }

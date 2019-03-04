@@ -13,7 +13,7 @@ export class MarketPageComponent implements OnInit {
               private cookie: CookieService ) {
 
   }
-  username = this.cookie.get('username');
+  username = this.cookie.get('id');
   marketplaceuser: MarketPlaceUser;
   
    

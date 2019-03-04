@@ -1,7 +1,6 @@
 import { Component, OnInit, Output , EventEmitter} from '@angular/core';
-import { allocExpando } from '@angular/core/src/render3/instructions';
 import { NgIf } from '@angular/common';
-import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, FormControl} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,12 +20,11 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
     @Output()
-    showSignEvent = new EventEmitter<boolean>();
+    showSignEvent = new EventEmitter<object>();
     showSignIn = true;
     private loginForm: FormGroup;
 
     constructor(
-        private router: Router,
         private loginService: LoginService,
         private marketPlaceUserDataService: MarketPlaceUserDataService,
         private router: Router,
@@ -46,19 +44,17 @@ export class LoginComponent implements OnInit {
                     const marketPlaceUser = response;
                     this.setMarketPlaceUser(marketPlaceUser);
                     this.showSignIn = false;
-                    this.showSignEvent.emit(this.showSignIn);
-                    this.cookie.set('address' , response.address);
-                    this.cookie.set('balance' , response.balance);
-                    this.cookie.set('email' , response.email);
-                    this.cookie.set('firstName' , response.firstName);
-                    this.cookie.set('id' , response.id);
-                    this.cookie.set('password' , response.password);
-                    this.cookie.set('username' , response.username);
-                    this.cookie.set('phoneNumber' , response.phoneNumber);
+                    this.showSignEvent.emit({showSignIn: this.showSignIn, firstname: response.firstname});
+                    this.cookie.set('firstname' , response.firstname);
+                    this.cookie.set('mpuid' , response.mpuid);
                     this.router.navigateByUrl('marketPage');
                 });
         } else {
+<<<<<<< HEAD
             console.log('Invalid Form!');
+=======
+            alert("Invalid form!");
+>>>>>>> f8b6cf7c723127af3b395aaa6f7445550e93b3dc
         }
     }
 

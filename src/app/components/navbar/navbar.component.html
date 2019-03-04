@@ -1,32 +1,37 @@
 <div>
   <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Marketplace</a>  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li *ngIf="showSignIn" class="nav-item active">
-          <a class="nav-link" href="login">Sign In</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a  class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{username}}
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="listings">Listings</a>
-            <a class="dropdown-item" href="#">Add Listing</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
+    <button (click)="loadHomePage()" class="btn btn-link homeBtnSize">Marketplace</button> 
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
-    </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+          <li *ngIf="!showSignIn" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle nav-link btnSize" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{username}}
+            </a>
+            
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <button (click)="loadUserListings()"class="dropdown-item">Your Listings</button>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Friends</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    <ul class="navbar-nav mr-auto">
+        <li *ngIf="!showSignIn" class="nav-item active">
+            <button (click)="signOut()" name="button" class="btn login_btn btnSize">Sign Out</button>
+            </li>
+      <li *ngIf="showSignIn" class="nav-item active">
+      <button (click)="signIn()" name="button" class="btn login_btn btnSize">Sign In</button>
+      </li>
+      <li *ngIf="showSignIn" class="nav-item active">
+      <button (click)="signUp()" name="button" class="btn login_btn btnSize">Sign Up</button>
+      </li>
+    </ul>
   </nav>
- <!-- <app-login (showSignEvent)="recieveShowSignInEvent($event)"></app-login> -->
+ <app-login *ngIf="showSignInView"(showSignEvent)="recieveShowSignInEvent($event)"></app-login> 
 
 </div>

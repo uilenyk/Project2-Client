@@ -12,7 +12,6 @@ export class MarketPlaceUserDataService {
     currentMarketPlaceUser = this.marketPlaceUserDataSource.asObservable();
 
     constructor() { }
-    notLogged = true;
     changeMarketPlaceUser(marketPlaceUser: MarketPlaceUser) {
         this.marketPlaceUserDataSource.next(marketPlaceUser);
     }
