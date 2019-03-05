@@ -14,9 +14,6 @@ export class RestAPIService {
     */
     private LOGIN_END_POINTS = {
         GET: { },
-<<<<<<< HEAD
-        POST: { loginURL: this.testURL + 'users/login'},
-=======
         POST: { loginURL: this.apiURL + 'unknown/login'},
         PUT: { }
     };
@@ -30,7 +27,6 @@ export class RestAPIService {
     private LISTING_END_POINTS = {
         GET: {listingURL: this.apiURL + '/listings'},
         POST: {},
->>>>>>> f8b6cf7c723127af3b395aaa6f7445550e93b3dc
         PUT: { }
     };
 

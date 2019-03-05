@@ -50,11 +50,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigateByUrl('marketPage');
                 });
         } else {
-<<<<<<< HEAD
-            console.log('Invalid Form!');
-=======
             alert("Invalid form!");
->>>>>>> f8b6cf7c723127af3b395aaa6f7445550e93b3dc
         }
     }
 

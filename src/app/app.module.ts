@@ -1,8 +1,6 @@
 import { MarketPageComponent } from './components/market-page/market-page.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,14 +8,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LandingComponent } from './components/landing/landing.component';
-<<<<<<< HEAD
-import { MarketPageComponent } from './components/market-page/market-page.component';
-import { ListingComponent } from './components/listing/listing.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-=======
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
->>>>>>> f8b6cf7c723127af3b395aaa6f7445550e93b3dc
 import { CookieService } from 'ngx-cookie-service';
 import { SearchComponent } from './search/search.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -60,6 +52,8 @@ import {
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserlistingsComponent } from './components/userlistings/userlistings.component';
 import { AddListingComponent } from './components/add-listing/add-listing.component';
+import { PhotoComponent } from './components/photo/photo.component';
+import { PhotoService } from './services/photo.service';
 
 
 @NgModule({
@@ -72,7 +66,8 @@ import { AddListingComponent } from './components/add-listing/add-listing.compon
     MarketPageComponent,
     NavbarComponent,
     UserlistingsComponent,
-    AddListingComponent
+    AddListingComponent,
+    PhotoComponent
   ],
   imports: [
     FormsModule,
@@ -101,7 +96,7 @@ import { AddListingComponent } from './components/add-listing/add-listing.compon
     MatSortModule,
     MatTableModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, PhotoService],
   bootstrap: [AppComponent],
   exports: [
     AppRoutingModule,
