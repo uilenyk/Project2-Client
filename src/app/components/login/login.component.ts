@@ -1,14 +1,13 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { allocExpando } from '@angular/core/src/render3/instructions';
+import { Component, OnInit, Output , EventEmitter} from '@angular/core';
 import { NgIf } from '@angular/common';
-import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, FormControl} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { LoginService } from '../../services/login-service.service';
 import { MarketPlaceUserDataService } from '../../services/market-place-user-data.service';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService} from 'ngx-cookie-service';
 import { MarketPlaceUser } from '../../models/market-place-user';
 import { Router } from '@angular/router';
 
@@ -38,6 +37,7 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         const form = this.loginForm;
+        console.log(form);
         if (form.valid) {
             this.loginService.login(form.value).subscribe(
                 (response) => {
@@ -45,13 +45,13 @@ export class LoginComponent implements OnInit {
                     const marketPlaceUser = response;
                     this.setMarketPlaceUser(marketPlaceUser);
                     this.showSignIn = false;
-                    this.showSignEvent.emit({ showSignIn: this.showSignIn, firstname: response.firstname });
-                    this.cookie.set('firstname', response.firstname);
-                    this.cookie.set('mpuid', response.id);
+                    this.showSignEvent.emit({showSignIn: this.showSignIn, firstname: response.firstname});
+                    this.cookie.set('firstname' , response.firstname);
+                    this.cookie.set('mpuid' , response.mpuid);
                     this.router.navigateByUrl('marketPage');
                 });
         } else {
-            alert('Invalid form!');
+            alert("Invalid form!");
         }
     }
 
@@ -63,9 +63,9 @@ export class LoginComponent implements OnInit {
     }
 
     private setMarketPlaceUser(marketPlaceUser: MarketPlaceUser) {
-
+       
         this.marketPlaceUserDataService.changeMarketPlaceUser(marketPlaceUser);
-
+       
     }
 
 }

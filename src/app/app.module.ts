@@ -1,3 +1,4 @@
+import { MarketPageComponent } from './components/market-page/market-page.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -48,6 +49,10 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { UserlistingsComponent } from './components/userlistings/userlistings.component';
+import { AddListingComponent } from './components/add-listing/add-listing.component';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +60,11 @@ import {
     LoginComponent,
     SignupComponent,
     LandingComponent,
-    SearchComponent
+    SearchComponent,
+    MarketPageComponent,
+    NavbarComponent,
+    UserlistingsComponent,
+    AddListingComponent
   ],
   imports: [
     FormsModule,

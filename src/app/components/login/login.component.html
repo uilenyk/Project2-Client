@@ -1,34 +1,36 @@
 <body>
-    <div id="login">
-        <h3 class="text-center text-white pt-5">Marketplace</h3>
-        <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate class="form">
-                            <h3 class="text-center text-info">Login</h3>
-                            <div class="form-group">
-                                <label for="email" class="text-info">Email:</label><br>
-                                <input type="text" name="email" formControlName="email" id="email" class="form-control"
-                                    required>
+  <div id="login">
+      <h3 class="text-center text-white pt-5">Marketplace</h3>
+      <div class="container">
+          <div id="login-row" class="row justify-content-center align-items-center">
+              <div id="login-column" class="col-md-6">
+                  <div id="login-box" class="col-md-12">
+                      <form [formGroup] ="loginForm" (ngSubmit)="onSubmit()" novalidate class="form">
+                          <h3 class="text-center text-info">Login</h3>
+                          <div class="form-group">
+                                <div class="input-group-prepend">
+                         <span class="input-group-text"><i class="icon fas fa-portrait"></i></span>
+                        <input type="text" placeholder="Email" name ="email" formControlName="email" id="email" class="inputBox form-control" required >  
                             </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>
-                                <input type="text" name="password" formControlName="password" id="password"
-                                    class="form-control" required>
-                            </div>
-                            <div class="form-group text-center">
-
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
-                            </div>
-                            <div id="register-link" class="text-right">
-                                <br><br>
-                                <a href="signup" class="text-info ">Sign Up!</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                          </div>
+                          <div class="form-group">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="icon fas fa-key"></i></span>
+                             <input type="text" placeholder="Password" name ="password" formControlName="password" id="password" class="inputBox form-control" required>
+                          </div>
+                          </div>
+                          <div class="form-group">
+                             
+                              <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                          </div>
+                          <div id="register-link" class="text-right">
+                              <br><br>
+                              <a href="signUp" class="text-info">Sign Up!</a>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </body>

@@ -4,6 +4,8 @@ import { NgIf } from '@angular/common';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { LoginService } from 'src/app/services/login-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -15,7 +17,9 @@ export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
 
-  constructor() { }
+  constructor(
+    private loginService: LoginService,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -33,15 +37,13 @@ export class SignupComponent implements OnInit {
       }
 
   onSubmit() {
-    if (this.signupForm.valid) {
-      console.log('Form Valid!');
-      console.log(this.signupForm.value);
+    const form = this.signupForm;
+    if (form.valid) {
+      this.loginService.signUp(form.value).subscribe();
+      this.router.navigateByUrl('marketPage');
     } else {
-      console.log('INVALID FORM REEEEEEEE');
+     alert("Invalid form!");
     }
   }
 
-  signup() {
-    console.log(this.signupForm);
-  }
 }
