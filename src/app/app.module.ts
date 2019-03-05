@@ -52,6 +52,7 @@ import {
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserlistingsComponent } from './components/userlistings/userlistings.component';
 import { AddListingComponent } from './components/add-listing/add-listing.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { AddListingComponent } from './components/add-listing/add-listing.compon
     MarketPageComponent,
     NavbarComponent,
     UserlistingsComponent,
-    AddListingComponent
+    AddListingComponent,
+    UserAccountComponent
   ],
   imports: [
     FormsModule,
