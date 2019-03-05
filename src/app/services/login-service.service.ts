@@ -26,9 +26,8 @@ export class LoginService {
 
     constructor(private restAPIService: RestAPIService) { }
 
-    login(userData: any): Observable<any> {
-        //  return this.testMarketPlaceUser;
-        return this.restAPIService.loginEndPoint(userData);
+    login(loginRequest): Observable<any> {
+        return this.restAPIService.login(loginRequest);
     }
 
 }

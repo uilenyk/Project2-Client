@@ -7,23 +7,58 @@ import { environment } from '../../environments/environment';
 })
 export class RestAPIService {
 
-    private testURL = environment.testURL;
-
-    /*
-    * Register GET, POST, PUT, and other http request types here
-    */
-    private END_POINTS = {
-        GET: { },
-        POST: {
-            loginURL: this.testURL
-        },
-        PUT: { }
-    };
+    private URL = environment.apiURL;
 
     constructor(private httpClient: HttpClient) { }
 
-    loginEndPoint(userData: any) {
-        const url = this.END_POINTS.POST.loginURL;
-        return this.httpClient.post(url, userData);
+    signUp(signupRequest) {
+        const url = `${this.URL}/unknown/signup`;
+        return this.httpClient.post(url, signupRequest);
     }
+
+    login(loginRequest) {
+        const url = `${this.URL}/unknown/login`;
+        return this.httpClient.post(url, loginRequest);
+    }
+
+    getMarketPlaceUser(id) {
+        const url = `${this.URL}/market-place-users/${id}`;
+        return this.httpClient.get(url);
+    }
+
+    getMarketPlaceUserListings(id) {
+        const url = `${this.URL}/market-place-users/${id}/listings`;
+        return this.httpClient.get(url);
+    }
+
+    getListing(id) {
+        const url = `${this.URL}/listings/${id}`;
+        return this.httpClient.get(url);
+    }
+
+    getListings(active: boolean) {
+        const url = `${this.URL}/listings/?active=${active}`;
+        return this.httpClient.get(url);
+    }
+
+    addListing(listing) {
+        const url = `${this.URL}/tags`;
+        return this.httpClient.post(url, listing);
+    }
+
+    getTag(id) {
+        const url = `${this.URL}/tags/${id}`;
+        return this.httpClient.get(url);
+    }
+
+    getTags() {
+        const url = `${this.URL}/tags`;
+        return this.httpClient.get(url);
+    }
+
+    addTag(tag) {
+        const url = `${this.URL}/tags`;
+        return this.httpClient.post(url, tag);
+    }
+
 }
