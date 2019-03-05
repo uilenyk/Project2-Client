@@ -16,8 +16,8 @@ export class NavbarComponent implements OnInit {
   username: any;
   marketPlaceUser: MarketPlaceUser;
   constructor(private marketPlaceDataService: MarketPlaceUserDataService,
-    private cookie: CookieService,
-    private router: Router) {
+              private cookie: CookieService,
+              private router: Router) {
 
   }
   addListing() {
@@ -41,10 +41,9 @@ export class NavbarComponent implements OnInit {
   }
 
   signIn() {
-    if (this.showSignInView == false) {
+    if (this.showSignInView === false) {
       this.showSignInView = true;
-    }
-    else {
+    } else {
       this.showSignInView = false;
     }
   }
