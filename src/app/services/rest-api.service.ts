@@ -13,29 +13,32 @@ export class RestAPIService {
     * Register GET, POST, PUT, and other http request types here
     */
     private LOGIN_END_POINTS = {
-        GET: { },
-        POST: { loginURL: this.apiURL + 'unknown/login'},
-        PUT: { }
+        GET: {},
+        POST: { loginURL: this.apiURL + 'unknown/login' },
+        PUT: {}
     };
 
     private SIGNUP_END_POINTS = {
-        GET: { },
-        POST: { signupURL: this.apiURL + '/unknown/signup'},
-        PUT: { }
+        GET: {},
+        POST: { signupURL: this.apiURL + '/unknown/signup' },
+        PUT: {}
     };
 
     private LISTING_END_POINTS = {
-        GET: {listingURL: this.apiURL + '/listings'},
+        GET: { listingURL: this.apiURL + '/listings' },
         POST: {},
-        PUT: { }
+        PUT: {}
     };
+
+    private 
+
 
     constructor(private httpClient: HttpClient) { }
 
-    getListingsEndPoint(id: any) {
+    getListingsEndPoint(id: any) { /*Get all listings based off of user's id*/
         const url = `${environment.apiUrl}/market-place-users/${id}/listings`;
         return this.httpClient.get(url);
-      }
+    }
 
     addListing(formData: any) {
         const url = `${environment.apiUrl}/listings`;
@@ -43,8 +46,8 @@ export class RestAPIService {
     }
 
     signUpEndPoint(formData: any) {
-    const url = this.SIGNUP_END_POINTS.POST.signupURL;
-    return this.httpClient.post(url, formData);
+        const url = this.SIGNUP_END_POINTS.POST.signupURL;
+        return this.httpClient.post(url, formData);
     }
 
     loginEndPoint(formData: any) {

@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./userlistings.component.css']
 })
 export class UserlistingsComponent implements OnInit {
-  constructor(private listingService: ListingsService, 
+  constructor(private listingService: ListingsService,
               private cookie: CookieService,
               private router: Router,
-              ) { }
+  ) { }
 
   listings: any;
   id: any;
@@ -25,23 +25,22 @@ export class UserlistingsComponent implements OnInit {
   ngOnInit() {
     this.id = this.cookie.get('mpuid');
   }
-
-  addListing(){
+  addListing() {
     this.listings = null;
     this.showAddListing = true;
   }
 
   getListings() {
     this.listingService.getListings(this.id)
-    .subscribe( (payload) => {
-      console.log(payload);
-      for (const key in payload) {
-             if (payload.hasOwnProperty(key)) {
-              this.listings = payload;
-                }
-              }
-            },
-     (error) => console.log(error));
-    }
+      .subscribe((payload) => {
+        console.log(payload);
+        for (const key in payload) {
+          if (payload.hasOwnProperty(key)) {
+            this.listings = payload;
+          }
+        }
+      },
+        (error) => console.log(error));
+  }
 
 }

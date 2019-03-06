@@ -12,11 +12,10 @@ export class ListingsService {
   getListings(id: any): Observable<any> {
     //  return this.testMarketPlaceUser;
     return this.restAPIService.getListingsEndPoint(id);
-}
+  }
   addListing(formData: any) {
     return this.restAPIService.addListing(formData);
   }
-
   searchListings(tags: any): Observable<any>  {
     return this.restAPIService.searchListings(tags);
   }

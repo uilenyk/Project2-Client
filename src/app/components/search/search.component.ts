@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { DataSource } from '@angular/cdk/table';
+import { ListingsService } from 'src/app/services/listings.service';
+import { RestAPIService } from 'src/app/services/rest-api.service';
 
 @Component({
   selector: 'app-search',
@@ -40,7 +42,9 @@ export class SearchComponent implements OnInit {
     value: 'Tags'
   }];
 
-  constructor() { }
+  constructor(
+    private listingsService: ListingsService
+  ) { }
 
   ngOnInit() {
     this.displayedColumns = this.columnNames.map(x => x.id);
@@ -48,15 +52,11 @@ export class SearchComponent implements OnInit {
   }
 
   createTable() {
-    const tableArr: Listing[] = [{ listid: 1, name: 'Golf Club Set', price: 59.95, description: 'H', status: true, tags: 'Sports' },
-    { listid: 2, name: 'Blender', price: 21.50, description: 'Used Once', status: true, tags: 'Cooking' },
-    { listid: 3, name: 'Antique Pistol', price: 6.941, description: 'Certificated of Authenticity included', status: true, tags: 'Other' },
-    { listid: 4, name: 'Headset', price: 80.00, description: 'Be', status: false, tags: 'Electronics' },
-    { listid: 5, name: 'MTG Red/White tournament deck', price: 5000.53, description: 'Boros Tourney winner', status: true, tags: 'Games' },
-    { listid: 6, name: 'Fencing Foil', price: 35.40, description: 'Left-handed', status: false, tags: 'Sports' }
-    ];
-    this.dataSource = new MatTableDataSource(tableArr);
-    this.dataSource.sort = this.sort;
+    this.listingsService.searchListings(null).subscribe((response) => {
+      console.log(response);
+    });
+    this.dataSource =
+      this.dataSource.sort = this.sort;
   }
 }
 

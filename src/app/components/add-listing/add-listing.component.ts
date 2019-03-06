@@ -16,7 +16,7 @@ import { MarketPlaceUserDataService } from '../../services/market-place-user-dat
 export class AddListingComponent implements OnInit {
 
   constructor(private listingService: ListingsService,
-    
+
               private cookie: CookieService,
               private router: Router,
               private marketPlaceUserDataService: MarketPlaceUserDataService
@@ -48,11 +48,11 @@ export class AddListingComponent implements OnInit {
 
   close() {
     this.showAddListing = false;
-    this.showAddListingEvent.emit({showAddListing: this.showAddListing});
+    this.showAddListingEvent.emit({ showAddListing: this.showAddListing });
   }
   onSubmit() {
-    var date = new Date();
-    var timestamp = date.getTime();
+    const date = new Date();
+    const timestamp = date.getTime();
     this.marketPlaceUserDataService.currentMarketPlaceUser.subscribe((user) => {
       this.owner = user;
     });
