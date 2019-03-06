@@ -10,12 +10,11 @@ import { MarketPlaceUserDataService } from 'src/app/services/market-place-user-d
   styleUrls: ['./userlistings.component.css']
 })
 export class UserlistingsComponent implements OnInit {
-  constructor(private listingService: ListingsService, 
+  constructor(private listingService: ListingsService,
               private cookie: CookieService,
               private router: Router,
               private marketPlaceUser: MarketPlaceUserDataService
               ) { }
-
   listings: any;
   id: any;
   showAddListing = false;
@@ -32,23 +31,22 @@ export class UserlistingsComponent implements OnInit {
    });
     this.id = this.cookie.get('mpuid');
   }
-
-  addListing(){
+  addListing() {
     this.listings = null;
     this.showAddListing = true;
   }
 
   getListings() {
     this.listingService.getListings(this.id)
-    .subscribe( (payload) => {
-      console.log(payload);
-      for (const key in payload) {
-             if (payload.hasOwnProperty(key)) {
-              this.listings = payload;
-                }
-              }
-            },
-     (error) => console.log(error));
-    }
+      .subscribe((payload) => {
+        console.log(payload);
+        for (const key in payload) {
+          if (payload.hasOwnProperty(key)) {
+            this.listings = payload;
+          }
+        }
+      },
+        (error) => console.log(error));
+  }
 
 }

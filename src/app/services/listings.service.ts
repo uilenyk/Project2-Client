@@ -20,5 +20,4 @@ export class ListingsService {
   searchListings(): Observable<any>  {
     return this.restAPIService.getListings();
   }
-
 }

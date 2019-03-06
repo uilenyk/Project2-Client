@@ -8,10 +8,13 @@ import { SignupComponent } from './components/signup/signup.component';
 import { UserlistingsComponent } from './components/userlistings/userlistings.component';
 import { PhotoComponent } from './components/photo/photo.component';
 import { RouteAuth } from 'src/app/routeAuth';
+import { switchMap } from 'rxjs/operators';
+import { UserAccountComponent } from './components/user-account/user-account.component';
+
 
 
 const routes: Routes = [
- 
+
   {
     path: '',
     component: MarketPageComponent
@@ -21,21 +24,22 @@ const routes: Routes = [
   }, {
     path: 'login',
     component: LoginComponent
-    }, {
-      path: 'marketPage',
-      component: MarketPageComponent
-      }, {
+  }, {
+    path: 'marketPage',
+    component: MarketPageComponent
+  }, {
     path: 'signUp',
     component: SignupComponent
-    },
-    {
+  }, {
       path: 'userlistings',
       component: UserlistingsComponent
-    },
-    {
+  }, {
       path: 'messages',
       component: MessagesComponent
-    }
+  },  {
+    path: 'user-account',
+    component: UserAccountComponent
+  }
 ];
 
 @NgModule({

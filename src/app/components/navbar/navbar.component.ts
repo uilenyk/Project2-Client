@@ -39,7 +39,7 @@ export class NavbarComponent implements OnInit {
 
   }
   messageOwner() {
-
+    
   }
   addListing() {
     this.router.navigateByUrl('userlistings');
@@ -69,10 +69,9 @@ export class NavbarComponent implements OnInit {
   }
 
   signIn() {
-    if (this.showSignInView == false) {
+    if (this.showSignInView === false) {
       this.showSignInView = true;
-    }
-    else {
+    } else {
       this.showSignInView = false;
     }
   }

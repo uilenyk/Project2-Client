@@ -11,7 +11,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './components/search/search.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -55,6 +55,7 @@ import { AddListingComponent } from './components/add-listing/add-listing.compon
 import { PhotoComponent } from './components/photo/photo.component';
 import { PhotoService } from './services/photo.service';
 import { MessagesComponent } from './components/messages/messages.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { MessagesComponent } from './components/messages/messages.component';
     AddListingComponent,
     PhotoComponent,
     MessagesComponent
+    UserAccountComponent
   ],
   imports: [
     FormsModule,

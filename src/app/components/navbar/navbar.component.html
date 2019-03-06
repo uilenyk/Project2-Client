@@ -27,8 +27,11 @@
               <button (click)="loadUserListings()" class="dropdown-item">Your Listings</button>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Friends</a>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item nav-link" href="http://localhost:4200/user-account">My Account</button>
             </div>
           </li>
+
           <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Your Listings">
             <i (click)="addListing()" class="fas fa-cart-plus fa-2x m-2"></i>
           </li>

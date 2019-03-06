@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit {
       this.loginService.signUp(form.value).subscribe();
       this.router.navigateByUrl('marketPage');
     } else {
-     alert("Invalid form!");
+     alert('Invalid form!');
     }
   }
 
