@@ -22,19 +22,30 @@ export class NavbarComponent implements OnInit {
   username: any;
   marketPlaceUser: MarketPlaceUser;
   listings: any;
-  dataSource;
-  displayedColumns = [];
+  //dataSource = new MatTableDataSource();
+  //displayedColumns = ['listid', 'active', 'name', 'description', 'price', 'owner', 'Offer Expires']; 
+
+
 
   @ViewChild(MatSort) sort: MatSort;
 
 
   constructor(private marketPlaceDataService: MarketPlaceUserDataService,
-              private cookie: CookieService,
-              private router: Router,
-              private listingService: ListingsService) { }
+    private cookie: CookieService,
+    private router: Router,
+    private listingService: ListingsService) { }
 
+  buyListing() {
+
+  }
+  messageOwner() {
+
+  }
   addListing() {
     this.router.navigateByUrl('userlistings');
+  }
+  checkMessages() {
+    this.router.navigateByUrl('messages');
   }
 
   loadHomePage() {
@@ -44,8 +55,13 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('userlistings');
   }
   signUp() {
-    this.router.navigateByUrl('searchListings');
+    this.router.navigateByUrl('signUp');
   }
+
+  messages() {
+    this.router.navigateByUrl('messages');
+  }
+
   signOut() {
     this.cookie.deleteAll();
     this.router.navigateByUrl('');
@@ -69,13 +85,13 @@ export class NavbarComponent implements OnInit {
 
       for (const key in payload) {
         if (payload.hasOwnProperty(key)) {
-     //   if (payload.tags == this.tags[0]) {
-       //     this.listings = payload;
-        //  }
-       // this.tags.values;
+          //   if (payload.tags == this.tags[0]) {
+          //     this.listings = payload;
+          //  }
+          // this.tags.values;
           //data.location //data beings just some variable
-          this.dataSource = new MatTableDataSource(this.listings);
-          this.dataSource.sort = this.sort;
+          // this.dataSource.data = payload;
+          this.listings = payload;
         }
       }
     }, (error) => console.log(error));
@@ -102,14 +118,14 @@ export class NavbarComponent implements OnInit {
   }
 
   addTag(tag: string) {
-    if (this.tags.length < 5) {
+    if (this.tags.length < 4) {
       this.tags.push(tag);
     }
     this.currentTag = '';
   }
 
   atMaxTags(): boolean {
-    if (this.tags.length == 5) {
+    if (this.tags.length == 4) {
       return true;
     } else {
       return false;

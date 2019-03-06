@@ -54,6 +54,7 @@ import { UserlistingsComponent } from './components/userlistings/userlistings.co
 import { AddListingComponent } from './components/add-listing/add-listing.component';
 import { PhotoComponent } from './components/photo/photo.component';
 import { PhotoService } from './services/photo.service';
+import { MessagesComponent } from './components/messages/messages.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { PhotoService } from './services/photo.service';
     NavbarComponent,
     UserlistingsComponent,
     AddListingComponent,
-    PhotoComponent
+    PhotoComponent,
+    MessagesComponent
   ],
   imports: [
     FormsModule,

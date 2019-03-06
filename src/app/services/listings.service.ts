@@ -13,7 +13,7 @@ export class ListingsService {
     //  return this.testMarketPlaceUser;
     return this.restAPIService.getListingsEndPoint(id);
 }
-  addListing(formData: any) {
+  addListing(formData: any): Observable<any> {
     return this.restAPIService.addListing(formData);
   }
 

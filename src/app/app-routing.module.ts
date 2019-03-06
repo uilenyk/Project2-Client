@@ -1,3 +1,4 @@
+import { MessagesComponent } from './components/messages/messages.component';
 import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './components/login/login.component';
 import { MarketPageComponent } from './components/market-page/market-page.component';
@@ -32,13 +33,13 @@ const routes: Routes = [
       component: UserlistingsComponent
     },
     {
-      path: 'photo',
-      component: PhotoComponent
+      path: 'messages',
+      component: MessagesComponent
     }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -33,6 +33,16 @@ export class RestAPIService {
 
     constructor(private httpClient: HttpClient) { }
 
+    sentMessages(id: any) {
+        const url = `${environment.apiUrl}/message/sent/${id}`;
+        return this.httpClient.get(url);
+    }
+
+    recievedMessages(id: any) {
+        const url = `${environment.apiUrl}/message/received/${id}`;
+        return this.httpClient.get(url);
+    }
+
     getListingsEndPoint(id: any) {
         const url = `${environment.apiUrl}/market-place-users/${id}/listings`;
         return this.httpClient.get(url);
@@ -53,7 +63,7 @@ export class RestAPIService {
         return this.httpClient.post(url, formData);
     }
 
-    getListings(): Observable<any> {
+    getListings() {
         const url = this.LISTING_END_POINTS.GET.listingURL;
         return this.httpClient.get(url);
     }

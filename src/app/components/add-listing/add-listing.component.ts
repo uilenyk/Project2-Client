@@ -34,6 +34,7 @@ export class AddListingComponent implements OnInit {
   id: any;
   showAddListing;
   owner: any;
+  listid: any;
 
   upload() {
     const file = this.selectedFiles.item(0);
@@ -75,9 +76,15 @@ export class AddListingComponent implements OnInit {
     const form = this.listingForm;
     console.log(form);
     if (form.valid) {
-      this.listingService.addListing(form.value).subscribe();
-      //upload listing id
-      this.upload();
+      this.listingService.addListing(form.value).subscribe(
+        (payload) => {
+        console.log(payload);
+       // this.listid = payload.listid;
+        this.listid = payload.listid;
+      }, (error) => console.log(error));
+     
+      //upload picture with isting id
+      //this.upload();
       this.router.navigateByUrl('');
     } else {
       alert('Invalid form!');

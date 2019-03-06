@@ -1,6 +1,16 @@
 .right-sideNav{
     float:right;
   }
+  .actions {
+  
+    margin-right: 10px;
+    -ms-grid-column-align: center !important;
+    text-align: center;
+  }
+
+  .shiftLeft{
+    margin-right: 120px;
+  }
 
 .btnSize{
   font-size: 20px;
