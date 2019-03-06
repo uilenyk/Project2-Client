@@ -76,4 +76,9 @@ export class RestAPIService {
         const url = `${this.URL}/tags`;
         return this.httpClient.post(url, tag);
     }
+
+    updateMarketPlaceUser(user) {
+        const url = `${this.URL}/market-place-user/personal/update`;
+        return this.httpClient.put(url, user);
+      }
 }

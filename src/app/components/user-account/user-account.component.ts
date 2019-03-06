@@ -13,6 +13,8 @@ import { Variable } from '@angular/compiler/src/render3/r3_ast';
 export class UserAccountComponent implements OnInit {
 
   user;
+  updateUser: MarketPlaceUser;
+  changeDetails: boolean;
 
   constructor(private marketPlaceUserService: MarketPlaceUserService,
               private cookie: CookieService,
@@ -20,10 +22,19 @@ export class UserAccountComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.changeDetails = false;
     this.marketPlaceUserService.getUser(this.cookie.get('mpuid')).subscribe((Response) => {
       this.user = Response;
       console.log(Response);
     });
+  }
+
+  editAccount() {
+    this.changeDetails = true;
+    this.marketPlaceUserService.updateUser(this.user).subscribe((Response) => {
+      this.user = Response;
+    });
+
   }
 
 }

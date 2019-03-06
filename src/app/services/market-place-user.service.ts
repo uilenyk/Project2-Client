@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RestAPIService } from './rest-api.service';
 import { Observable } from 'rxjs';
+import { MarketPlaceUser } from '../models/market-place-user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,5 +12,9 @@ export class MarketPlaceUserService {
   getUser(id: any): Observable<any> {
     //  return this.testMarketPlaceUser;
     return this.restAPIService.getMarketPlaceUser(id);
+  }
+
+  updateUser(user: MarketPlaceUser) {
+    return this.restAPIService.updateMarketPlaceUser(user);
   }
 }
