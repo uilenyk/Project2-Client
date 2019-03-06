@@ -11,12 +11,12 @@ export class ListingsService {
   constructor(private restAPIService: RestAPIService) { }
   getListings(id: any): Observable<any> {
     //  return this.testMarketPlaceUser;
-    return this.restAPIService.getListingsEndPoint(id);
+    return this.restAPIService.getListings(id);
   }
   addListing(formData: any) {
     return this.restAPIService.addListing(formData);
   }
   searchListings(tags: any): Observable<any> {
-    return this.restAPIService.getListingsEndPoint(tags);
+    return this.restAPIService.addListing(tags); // to be added       this.restAPIService.getListingsByTag(tags);
   }
 }

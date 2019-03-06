@@ -7,61 +7,58 @@ import { environment } from '../../environments/environment';
 })
 export class RestAPIService {
 
-    private apiURL = environment.apiUrl;
-
-    /*
-    * Register GET, POST, PUT, and other http request types here
-    */
-    private LOGIN_END_POINTS = {
-        GET: {},
-        POST: { loginURL: this.apiURL + 'unknown/login' },
-        PUT: {}
-    };
-
-    private SIGNUP_END_POINTS = {
-        GET: {},
-        POST: { signupURL: this.apiURL + '/unknown/signup' },
-        PUT: {}
-    };
-
-    private LISTING_END_POINTS = {
-        GET: { listingURL: this.apiURL + '/listings' },
-        POST: {},
-        PUT: {}
-    };
-
-    private 
-
+    private URL = environment.apiURL;
 
     constructor(private httpClient: HttpClient) { }
 
-    getListingsEndPoint(id: any) { /*Get all listings based off of user's id*/
-        const url = `${environment.apiUrl}/market-place-users/${id}/listings`;
+    signUp(signupRequest) {
+        const url = `${this.URL}/unknown/signup`;
+        return this.httpClient.post(url, signupRequest);
+    }
+
+    login(loginRequest) {
+        const url = `${this.URL}/unknown/login`;
+        return this.httpClient.post(url, loginRequest);
+    }
+
+    getMarketPlaceUser(id) {
+        const url = `${this.URL}/market-place-users/${id}`;
         return this.httpClient.get(url);
     }
 
-    addListing(formData: any) {
-        const url = `${environment.apiUrl}/listings`;
-        return this.httpClient.post(url, formData);
-    }
-
-    signUpEndPoint(formData: any) {
-        const url = this.SIGNUP_END_POINTS.POST.signupURL;
-        return this.httpClient.post(url, formData);
-    }
-
-    loginEndPoint(formData: any) {
-        const url = this.LOGIN_END_POINTS.POST.loginURL;
-        return this.httpClient.post(url, formData);
-    }
-
-    searchListings(formData: any) {
-        const url = this.LISTING_END_POINTS.GET.listingURL;
+    getMarketPlaceUserListings(id) {
+        const url = `${this.URL}/market-place-users/${id}/listings`;
         return this.httpClient.get(url);
     }
-    getUserEndPoint(formData: any) {
-        const url = this.LISTING_END_POINTS.GET.listingURL;
+
+    getListing(id) {
+        const url = `${this.URL}/listings/${id}`;
         return this.httpClient.get(url);
+    }
+
+    getListings(active: boolean) {
+        const url = `${this.URL}/listings/?active=${active}`;
+        return this.httpClient.get(url);
+    }
+
+    addListing(listing) {
+        const url = `${this.URL}/tags`;
+        return this.httpClient.post(url, listing);
+    }
+
+    getTag(id) {
+        const url = `${this.URL}/tags/${id}`;
+        return this.httpClient.get(url);
+    }
+
+    getTags() {
+        const url = `${this.URL}/tags`;
+        return this.httpClient.get(url);
+    }
+
+    addTag(tag) {
+        const url = `${this.URL}/tags`;
+        return this.httpClient.post(url, tag);
     }
 
 }
