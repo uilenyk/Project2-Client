@@ -54,7 +54,8 @@ import {
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserlistingsComponent } from './components/userlistings/userlistings.component';
 import { AddListingComponent } from './components/add-listing/add-listing.component';
-import { UserAccountComponent } from './components/user-account/user-account.component';
+import { PhotoComponent } from './components/photo/photo.component';
+import { PhotoService } from './services/photo.service';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,7 @@ import { UserAccountComponent } from './components/user-account/user-account.com
     NavbarComponent,
     UserlistingsComponent,
     AddListingComponent,
-    UserAccountComponent
+    PhotoComponent
   ],
   imports: [
     FormsModule,
@@ -96,7 +97,7 @@ import { UserAccountComponent } from './components/user-account/user-account.com
     MatSortModule,
     MatTableModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, PhotoService],
   bootstrap: [AppComponent],
   exports: [
     AppRoutingModule,

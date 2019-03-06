@@ -16,7 +16,9 @@ export class ListingsService {
   addListing(formData: any) {
     return this.restAPIService.addListing(formData);
   }
-  searchListings(tags: any): Observable<any> {
-    return this.restAPIService.getListingsEndPoint(tags);
+
+  searchListings(tags: any): Observable<any>  {
+    return this.restAPIService.searchListings(tags);
+
   }
 }

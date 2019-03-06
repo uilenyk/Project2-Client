@@ -4,8 +4,7 @@ import { NgModule } from '@angular/core';
 import { ActivatedRoute, Routes, RouterModule } from '@angular/router';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserlistingsComponent } from './components/userlistings/userlistings.component';
-import { switchMap } from 'rxjs/operators';
-import { UserAccountComponent } from './components/user-account/user-account.component';
+
 
 
 const routes: Routes = [
@@ -22,15 +21,16 @@ const routes: Routes = [
   }, {
     path: 'signUp',
     component: SignupComponent
-  },
-  {
-    path: 'userlistings',
-    component: UserlistingsComponent
-  },
-  {
-    path: 'user-account',
-    component: UserAccountComponent
-  }
+    },
+    {
+      path: 'userlistings',
+      component: UserlistingsComponent
+    },
+    {
+      path: 'photo',
+      component: PhotoComponent
+    }
+
 ];
 
 @NgModule({
