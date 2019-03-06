@@ -52,6 +52,8 @@ import {
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserlistingsComponent } from './components/userlistings/userlistings.component';
 import { AddListingComponent } from './components/add-listing/add-listing.component';
+import { PhotoComponent } from './components/photo/photo.component';
+import { PhotoService } from './services/photo.service';
 
 
 @NgModule({
@@ -64,7 +66,8 @@ import { AddListingComponent } from './components/add-listing/add-listing.compon
     MarketPageComponent,
     NavbarComponent,
     UserlistingsComponent,
-    AddListingComponent
+    AddListingComponent,
+    PhotoComponent
   ],
   imports: [
     FormsModule,
@@ -93,7 +96,7 @@ import { AddListingComponent } from './components/add-listing/add-listing.compon
     MatSortModule,
     MatTableModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, PhotoService],
   bootstrap: [AppComponent],
   exports: [
     AppRoutingModule,
