@@ -30,6 +30,8 @@ export class RestAPIService {
         PUT: {}
     };
 
+    private 
+
 
     constructor(private httpClient: HttpClient) { }
 
@@ -54,6 +56,10 @@ export class RestAPIService {
     }
 
     searchListings(formData: any) {
+        const url = this.LISTING_END_POINTS.GET.listingURL;
+        return this.httpClient.get(url);
+    }
+    getUserEndPoint(formData: any) {
         const url = this.LISTING_END_POINTS.GET.listingURL;
         return this.httpClient.get(url);
     }

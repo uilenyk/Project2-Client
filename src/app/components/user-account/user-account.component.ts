@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MarketPlaceUser } from 'src/app/models/market-place-user';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-account',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserAccountComponent implements OnInit {
 
-  constructor() { }
+  constructor(private marketPlaceUser: MarketPlaceUser,
+              private cookie: CookieService,
+              private router: Router,
+              private ActiveRoute ) {}
 
   ngOnInit() {
+    this.marketPlaceUser = (this.cookie.get('mpuid'));
   }
 
 }
