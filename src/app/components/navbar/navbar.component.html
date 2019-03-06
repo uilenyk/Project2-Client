@@ -1,15 +1,15 @@
 <div>
-  <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light my-8">
     <button (click)="loadHomePage()" class="btn btn-link homeBtnSize">Marketplace</button> 
       <form class="form-inline my-2 my-lg-0">
         <div class="form-group">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-tags"></i></span>
             <input class="form-control" type="textarea" id="inputTags" name="inputTags" placeholder="Enter Tags"
-              [(ngModel)]="currentTag" (keydown.enter)="addTag(currentTag)" />
+              [(ngModel)]="currentTag" (keydown.space)="addTag(currentTag)" />
           </div>
         </div>
-        <button (click)="searchListings()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <button (click)="searchListings()" class="btn btn-outline-success my-2 my-sm-0">Search</button>
         <div class="max-tag-message" *ngIf="atMaxTags()">
           Maximum number of tags reached.
         </div>
@@ -54,6 +54,19 @@
     </ul>
   </nav>
  <app-login *ngIf="showSignInView"(showSignEvent)="recieveShowSignInEvent($event)"></app-login> 
+ 
+ <mat-table *ngIf="dataSource" #table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="{{column.id}}" *ngFor="let column of columnNames">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> {{column.value}} </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element[column.id]}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+  <!--
  <div *ngIf="listings" class="container align">
   <table class="table table-bordered table-hover">
     <th>Active</th>
@@ -71,3 +84,4 @@
     </tr>
       </table>
       </div>
+-->

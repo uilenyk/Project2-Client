@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -52,9 +53,18 @@ export class RestAPIService {
         return this.httpClient.post(url, formData);
     }
 
-    searchListings(tags: any) {
+    getListings(): Observable<any> {
         const url = this.LISTING_END_POINTS.GET.listingURL;
         return this.httpClient.get(url);
+    }
+    getTags() {
+        const url = `${this.apiURL}/tags`;
+        return this.httpClient.get(url);
+    }
+    
+    addTag(tag) {
+        const url = `${this.apiURL}/tags`;
+        return this.httpClient.post(url, tag);
     }
 
 }

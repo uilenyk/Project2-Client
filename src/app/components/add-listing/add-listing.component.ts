@@ -6,6 +6,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { componentFactoryName, ResourceLoader } from '@angular/compiler';
 import { MarketPlaceUser } from 'src/app/models/market-place-user';
 import { MarketPlaceUserDataService } from '../../services/market-place-user-data.service';
+import { PhotoService } from 'src/app/services/photo.service';
 
 
 @Component({
@@ -13,10 +14,13 @@ import { MarketPlaceUserDataService } from '../../services/market-place-user-dat
   templateUrl: './add-listing.component.html',
   styleUrls: ['./add-listing.component.css']
 })
-export class AddListingComponent implements OnInit {
 
+
+export class AddListingComponent implements OnInit {
+  
+  selectedFiles: FileList;
   constructor(private listingService: ListingsService,
-    
+              private photoService: PhotoService,
               private cookie: CookieService,
               private router: Router,
               private marketPlaceUserDataService: MarketPlaceUserDataService
@@ -31,6 +35,15 @@ export class AddListingComponent implements OnInit {
   showAddListing;
   owner: any;
 
+  upload() {
+    const file = this.selectedFiles.item(0);
+    this.photoService.uploadfile(file);
+  }
+
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+  
   ngOnInit() {
     this.id = this.cookie.get('mpuid');
     this.listingForm = new FormGroup({
@@ -63,6 +76,8 @@ export class AddListingComponent implements OnInit {
     console.log(form);
     if (form.valid) {
       this.listingService.addListing(form.value).subscribe();
+      //upload listing id
+      this.upload();
       this.router.navigateByUrl('');
     } else {
       alert('Invalid form!');
