@@ -7,9 +7,7 @@ import { environment } from '../../environments/environment';
 })
 export class RestAPIService {
 
-    private URL = environment.apiURL;
-
-    constructor(private httpClient: HttpClient) { }
+private URL = environment.apiURL;
 
     signUp(signupRequest) {
         const url = `${this.URL}/unknown/signup`;
@@ -60,5 +58,4 @@ export class RestAPIService {
         const url = `${this.URL}/tags`;
         return this.httpClient.post(url, tag);
     }
-
 }

@@ -8,26 +8,13 @@ import { MarketPlaceUser } from '../models/market-place-user';
 })
 export class LoginService {
 
-    private testMarketPlaceUser: MarketPlaceUser = {
-        firstName: 'John',
-        lastName: 'Doe',
-        address: {
-            street: 'Bruce B. Downs Blvd 2000',
-            city: 'Tampa',
-            state: 'Florida',
-            zipCode: 31405
-        },
-        credential: {
-            email: 'johnDoe@gmail.com',
-            username: 'johndoe',
-            password: 'johndoe'
-        }
-    };
-
     constructor(private restAPIService: RestAPIService) { }
 
     login(loginRequest): Observable<any> {
         return this.restAPIService.login(loginRequest);
     }
 
+    signUp(formData: any) {
+        return this.restAPIService.signUpEndPoint(formData);
+    }
 }

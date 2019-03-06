@@ -1,0 +1,24 @@
+<div class="btn-group-vertical btnBorder align">
+    <button class = "btn btn-info btnSize" (click)="addListing()">Add Listing</button> 
+    <button class = "btn btn-info btnSize" (click)="getListings()">View Your Listings</button> 
+  </div>
+<div class="container align">
+    <table class="table table-bordered table-hover" *ngIf="listings">
+      <th>Active</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Expires</th>
+
+      <tr *ngFor="let list of listings">
+      <td>{{list.active}}</td> 
+      <td>{{list.name}}</td>  
+      <td>{{list.description}}</td>  
+      <td>{{list.price}}</td> 
+      <td>{{list.timeout | date: 'dd/MM/yyyy'}}</td>    
+      </tr>
+        </table>
+  </div>
+   
+      <app-add-listing *ngIf="showAddListing" (showAddListingEvent)="recieveAddListingEvent($event)"></app-add-listing>
+  
