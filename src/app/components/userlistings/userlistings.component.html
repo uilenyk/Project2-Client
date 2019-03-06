@@ -19,6 +19,6 @@
       </tr>
         </table>
   </div>
-  <div *ngIf="showAddListing" class= "align">
-      <app-add-listing></app-add-listing>
-  </div>
+   
+      <app-add-listing *ngIf="showAddListing" (showAddListingEvent)="recieveAddListingEvent($event)"></app-add-listing>
+  

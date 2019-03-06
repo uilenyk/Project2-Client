@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ListingsService } from 'src/app/services/listings.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { componentFactoryName, ResourceLoader } from '@angular/compiler';
@@ -15,44 +15,57 @@ import { MarketPlaceUserDataService } from '../../services/market-place-user-dat
 })
 export class AddListingComponent implements OnInit {
 
-  constructor(private listingService: ListingsService, 
+  constructor(private listingService: ListingsService,
+    
               private cookie: CookieService,
               private router: Router,
               private marketPlaceUserDataService: MarketPlaceUserDataService
-    ) { }
+  ) { }
 
-    listingForm: FormGroup;
-    id: any; 
-    showAddListing = false;
+  @Output()
+  showAddListingEvent = new EventEmitter<object>();
 
+  private listingForm: FormGroup;
+
+  id: any;
+  showAddListing;
+  owner: any;
 
   ngOnInit() {
-   this.id = this.cookie.get('mpuid');
-  this.listingForm = new FormGroup({
-        name: new FormControl(),
-        price: new FormControl(),
-        description: new FormControl(),
-        tags: new FormControl(),
-        image: new FormControl(),
-        timeout: new FormControl(),
-        owner: new FormControl(),
-        active: new FormControl()
-      });
-    }
+    this.id = this.cookie.get('mpuid');
+    this.listingForm = new FormGroup({
+      name: new FormControl(),
+      price: new FormControl(),
+      description: new FormControl(),
+      tags: new FormControl(),
+      image: new FormControl(),
+      timeout: new FormControl(),
+      owner: new FormControl(),
+      active: new FormControl()
+    });
+
+  }
+
+  close() {
+    this.showAddListing = false;
+    this.showAddListingEvent.emit({showAddListing: this.showAddListing});
+  }
   onSubmit() {
     var date = new Date();
     var timestamp = date.getTime();
-    this.listingForm.patchValue({owner:  this.marketPlaceUserDataService.currentMarketPlaceUser});
-    this.listingForm.patchValue({timeout: timestamp});
-    this.listingForm.patchValue({mpu_id: this.id});
-    this.listingForm.patchValue({active: 'true'});
+    this.marketPlaceUserDataService.currentMarketPlaceUser.subscribe((user) => {
+      this.owner = user;
+    });
+    this.listingForm.patchValue({ owner: this.owner });
+    this.listingForm.patchValue({ timeout: timestamp });
+    this.listingForm.patchValue({ active: 'true' });
     const form = this.listingForm;
-  
-  if (form.valid) {
-     this.listingService.addListing(form.value).subscribe();
+    console.log(form);
+    if (form.valid) {
+      this.listingService.addListing(form.value).subscribe();
       this.router.navigateByUrl('');
     } else {
-   alert('Invalid form!');
-  }
+      alert('Invalid form!');
+    }
   }
 }

@@ -2,14 +2,12 @@ import { Address } from './address';
 import { Credential } from './credential';
 
 export class MarketPlaceUser {
-    firstName: string;
-    lastName: string;
-    address: string;
-    balance: number;
-    email: string;
-    id: number;
-    password: string;
-    phoneNumber: string;
+    firstname: string;
+    lastname: string;
+    //address: Address;
+   // balance: number;
+   
+    mpuid: number;
+    //phoneNumber: string;
     username: string;
-    logged: boolean;
 }

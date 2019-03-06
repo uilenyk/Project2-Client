@@ -15,8 +15,12 @@ export class UserlistingsComponent implements OnInit {
               ) { }
 
   listings: any;
-  id: any; 
+  id: any;
   showAddListing = false;
+
+  recieveAddListingEvent(object) {
+    this.showAddListing = object.showAddListing;
+  }
 
   ngOnInit() {
     this.id = this.cookie.get('mpuid');
