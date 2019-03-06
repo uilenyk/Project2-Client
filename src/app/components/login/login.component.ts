@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
         if (form.valid) {
             this.loginService.login(form.value).subscribe(
                 (response) => {
-                    console.log(response);
                     const marketPlaceUser = response;
                     this.setMarketPlaceUser(marketPlaceUser);
                     this.showSignIn = false;

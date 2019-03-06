@@ -1,6 +1,16 @@
 .right-sideNav{
     float:right;
   }
+  .actions {
+  
+    margin-right: 10px;
+    -ms-grid-column-align: center !important;
+    text-align: center;
+  }
+
+  .shiftLeft{
+    margin-right: 120px;
+  }
 
 .btnSize{
   font-size: 20px;
@@ -21,4 +31,27 @@
   font-size: 30px;
   width: 20px !important;
   padding: 20px !important;
+}
+.chip {
+  display: inline-block;
+  padding: 0 25px;
+  height: 30px;
+  font-size: 16px;
+  line-height: 30px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+}
+
+.max-tag-message {
+  font-style: italic;
+  color: red;
+}
+
+.fa-times {
+  cursor: pointer;
+  opacity: .5;
+}
+
+.fa-times:hover {
+  opacity: .8;
 }

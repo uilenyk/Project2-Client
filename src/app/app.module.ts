@@ -52,6 +52,9 @@ import {
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { UserlistingsComponent } from './components/userlistings/userlistings.component';
 import { AddListingComponent } from './components/add-listing/add-listing.component';
+import { PhotoComponent } from './components/photo/photo.component';
+import { PhotoService } from './services/photo.service';
+import { MessagesComponent } from './components/messages/messages.component';
 import { UserAccountComponent } from './components/user-account/user-account.component';
 
 
@@ -66,6 +69,8 @@ import { UserAccountComponent } from './components/user-account/user-account.com
     NavbarComponent,
     UserlistingsComponent,
     AddListingComponent,
+    PhotoComponent,
+    MessagesComponent
     UserAccountComponent
   ],
   imports: [
@@ -95,7 +100,7 @@ import { UserAccountComponent } from './components/user-account/user-account.com
     MatSortModule,
     MatTableModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, PhotoService],
   bootstrap: [AppComponent],
   exports: [
     AppRoutingModule,
