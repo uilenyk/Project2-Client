@@ -17,7 +17,7 @@ import { PhotoService } from 'src/app/services/photo.service';
 
 
 export class AddListingComponent implements OnInit {
-  
+
   selectedFiles: FileList;
   constructor(private listingService: ListingsService,
               private photoService: PhotoService,
@@ -44,7 +44,7 @@ export class AddListingComponent implements OnInit {
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
-  
+
   ngOnInit() {
     this.id = this.cookie.get('mpuid');
     this.listingForm = new FormGroup({
@@ -78,13 +78,13 @@ export class AddListingComponent implements OnInit {
     if (form.valid) {
       this.listingService.addListing(form.value).subscribe(
         (payload) => {
-        console.log(payload);
-       // this.listid = payload.listid;
-        this.listid = payload.listid;
-      }, (error) => console.log(error));
-     
-      //upload picture with isting id
-      //this.upload();
+          console.log(payload);
+          // this.listid = payload.listid;
+          this.listid = payload.listid;
+        }, (error) => console.log(error));
+
+      // upload picture with isting id
+      // this.upload();
       this.router.navigateByUrl('');
     } else {
       alert('Invalid form!');

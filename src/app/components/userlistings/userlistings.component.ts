@@ -25,11 +25,11 @@ export class UserlistingsComponent implements OnInit {
 
   ngOnInit() {
    this.marketPlaceUser.currentMarketPlaceUser.subscribe((user) => {
-     if(user == null) {
+     if (user == null) {
        this.router.navigateByUrl('login');
    }
    });
-    this.id = this.cookie.get('mpuid');
+   this.id = this.cookie.get('mpuid');
   }
   addListing() {
     this.listings = null;

@@ -1,5 +1,5 @@
 import { MessagesComponent } from './components/messages/messages.component';
-import { SearchComponent } from './search/search.component';
+import { SearchComponent } from './components/search/search.component';
 import { LoginComponent } from './components/login/login.component';
 import { MarketPageComponent } from './components/market-page/market-page.component';
 import { NgModule } from '@angular/core';
@@ -31,12 +31,12 @@ const routes: Routes = [
     path: 'signUp',
     component: SignupComponent
   }, {
-      path: 'userlistings',
-      component: UserlistingsComponent
+    path: 'userlistings',
+    component: UserlistingsComponent
   }, {
-      path: 'messages',
-      component: MessagesComponent
-  },  {
+    path: 'messages',
+    component: MessagesComponent
+  }, {
     path: 'user-account',
     component: UserAccountComponent
   }

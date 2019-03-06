@@ -13,17 +13,17 @@ import { MatSort, MatTableDataSource } from '@angular/material';
 })
 export class NavbarComponent implements OnInit {
 
-  isDeleted: boolean = false;
-  currentTag: string = '';
-  maxTags: boolean = false;
+  isDeleted = false;
+  currentTag = '';
+  maxTags = false;
   tags: Array<string> = [];
   showSignIn = true;
   showSignInView = false;
   username: any;
   marketPlaceUser: MarketPlaceUser;
   listings: any;
-  //dataSource = new MatTableDataSource();
-  //displayedColumns = ['listid', 'active', 'name', 'description', 'price', 'owner', 'Offer Expires']; 
+  // dataSource = new MatTableDataSource();
+  // displayedColumns = ['listid', 'active', 'name', 'description', 'price', 'owner', 'Offer Expires'];
 
 
 
@@ -31,15 +31,15 @@ export class NavbarComponent implements OnInit {
 
 
   constructor(private marketPlaceDataService: MarketPlaceUserDataService,
-    private cookie: CookieService,
-    private router: Router,
-    private listingService: ListingsService) { }
+              private cookie: CookieService,
+              private router: Router,
+              private listingService: ListingsService) { }
 
   buyListing() {
 
   }
   messageOwner() {
-    
+
   }
   addListing() {
     this.router.navigateByUrl('userlistings');
@@ -88,7 +88,7 @@ export class NavbarComponent implements OnInit {
           //     this.listings = payload;
           //  }
           // this.tags.values;
-          //data.location //data beings just some variable
+          // data.location //data beings just some variable
           // this.dataSource.data = payload;
           this.listings = payload;
         }
@@ -113,7 +113,7 @@ export class NavbarComponent implements OnInit {
 
 
   deleteTag(tag: string) {
-    this.tags.splice(this.tags.indexOf(tag), 1)
+    this.tags.splice(this.tags.indexOf(tag), 1);
   }
 
   addTag(tag: string) {
@@ -124,7 +124,7 @@ export class NavbarComponent implements OnInit {
   }
 
   atMaxTags(): boolean {
-    if (this.tags.length == 4) {
+    if (this.tags.length === 4) {
       return true;
     } else {
       return false;

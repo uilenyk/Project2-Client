@@ -1,84 +1,84 @@
 <div class="d-flex">
-    <div class="container h-100 text-left">
-      <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
-        <div class="container text-center">
-          <div class="form-group row">
-            <div class="col-sm-6 text-left">
-              <div>
-                <label for="firstName">First:</label>
-                <input class="form-control" id="firstName" type="text" name="firstName" formControlName="firstName"
-                  placeholder="Jane" required>
-              </div>
+  <div class="container h-100 text-left">
+    <form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="container text-center">
+        <div class="form-group row">
+          <div class="col-sm-6 text-left">
+            <div>
+              <label for="firstName">First:</label>
+              <input class="form-control" id="firstName" type="text" name="firstName" formControlName="firstName"
+                placeholder="Jane" required>
             </div>
-            <div class="col-sm-6 text-left">
-              <div>
-                <label for="lastName">Last:</label>
-                <input class="form-control" id="lastName" type="text" name="lastName" formControlName="lastName"
-                  placeholder="Doe" required>
-              </div>
+          </div>
+          <div class="col-sm-6 text-left">
+            <div>
+              <label for="lastName">Last:</label>
+              <input class="form-control" id="lastName" type="text" name="lastName" formControlName="lastName"
+                placeholder="Doe" required>
             </div>
           </div>
         </div>
-        <div class="container text-center">
-          <div class="form-group text-left row">
-            <div class="col-sm-12">
-              <label for="email">Email:</label>
-              <input class="form-control" id="email" type="text" name="email" formControlName="email"
-                placeholder="name@example.com" required>
-            </div>
+      </div>
+      <div class="container text-center">
+        <div class="form-group text-left row">
+          <div class="col-sm-12">
+            <label for="email">Email:</label>
+            <input class="form-control" id="email" type="text" name="email" formControlName="email"
+              placeholder="name@example.com" required>
           </div>
-          <div class="form-group text-left row">
-            <div class="col-sm-12">
-              <label for="password">Password:</label>
-              <input class="form-control" id="password" type="password" name="password" formControlName="password"
-                placeholder="Password" required>
+        </div>
+        <div class="form-group text-left row">
+          <div class="col-sm-12">
+            <label for="password">Password:</label>
+            <input class="form-control" id="password" type="password" name="password" formControlName="password"
+              placeholder="Password" required>
+          </div>
+        </div>
+      </div>
+      <div class="container text-center">
+        <div class="form-group text-left row">
+          <div class="col-sm-10 text-left">
+            <label for="address">Address:</label>
+            <input class="form-control" id="address" type="text" name="address" formControlName="address"
+              placeholder="123 Fake St." required>
+          </div>
+          <div class="col-sm-2 text-left">
+            <div class="form-group">
+              <label for="zipcode">Zip Code:</label>
+              <input class="form-control" id="zipcode" type="number" name="zipcode" formControlName="zipcode"
+                placeholder="37188" required>
             </div>
           </div>
         </div>
-        <div class="container text-center">
-          <div class="form-group text-left row">
-            <div class="col-sm-10 text-left">
-              <label for="address">Address:</label>
-              <input class="form-control" id="address" type="text" name="address" formControlName="address"
-                placeholder="123 Fake St." required>
-            </div>
-            <div class="col-sm-2 text-left">
-              <div class="form-group">
-                <label for="zipcode">Zip Code:</label>
-                <input class="form-control" id="zipcode" type="number" name="zipcode" formControlName="zipcode"
-                  placeholder="37188" required>
-              </div>
+        <div class="form-group row text-left">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="city">City:</label>
+              <input class="form-control" id="city" type="text" name="city" formControlName="city"
+                placeholder="Springfield" required>
             </div>
           </div>
-          <div class="form-group row text-left">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="city">City:</label>
-                <input class="form-control" id="city" type="text" name="city" formControlName="city"
-                  placeholder="Springfield" required>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label for="state">State:</label>
-                <input class="form-control" id="state" type="text" name="state" formControlName="state"
-                  placeholder="Springfield" required>
-              </div>
-            </div>
-          </div>
-          <div class="form-group row text-left">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label for="country">Country</label>
-                <input class="form-control" id="country" type="text" name="country" formControlName="country"
-                  placeholder="United States" required>
-              </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="state">State:</label>
+              <input class="form-control" id="state" type="text" name="state" formControlName="state"
+                placeholder="Springfield" required>
             </div>
           </div>
         </div>
-        <div class="form-group text-center">
-            <input type="submit" name="Submit" class="btn btn-info btn-md" value="Submit">
+        <div class="form-group row text-left">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="country">Country</label>
+              <input class="form-control" id="country" type="text" name="country" formControlName="country"
+                placeholder="United States" required>
+            </div>
+          </div>
         </div>
-      </form>
-    </div>
+      </div>
+      <div class="form-group text-center">
+        <input type="submit" name="Submit" class="btn btn-info btn-md" value="Submit">
+      </div>
+    </form>
   </div>
+</div>

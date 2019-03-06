@@ -52,7 +52,7 @@ export class SearchComponent implements OnInit {
   }
 
   createTable() {
-    this.listingsService.searchListings(null).subscribe((response) => {
+    this.listingsService.searchListings().subscribe((response) => {
       console.log(response);
     });
     this.dataSource =

@@ -10,7 +10,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class MarketPageComponent implements OnInit {
 
   constructor(private marketPlaceDataService: MarketPlaceUserDataService,
-              private cookie: CookieService ) {
+              private cookie: CookieService) {
 
   }
   username = this.cookie.get('id');
@@ -19,7 +19,8 @@ export class MarketPageComponent implements OnInit {
 
   ngOnInit() {
     this.marketPlaceDataService.currentMarketPlaceUser.subscribe((marketplaceuser) => {
-      this.marketplaceuser = marketplaceuser; });
-    }
+      this.marketplaceuser = marketplaceuser;
+    });
+  }
 
 }

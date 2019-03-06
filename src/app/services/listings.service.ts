@@ -11,13 +11,13 @@ export class ListingsService {
   constructor(private restAPIService: RestAPIService) { }
   getListings(id: any): Observable<any> {
     //  return this.testMarketPlaceUser;
-    return this.restAPIService.getListingsEndPoint(id);
-}
+    return this.restAPIService.getListings(id);
+  }
   addListing(formData: any): Observable<any> {
     return this.restAPIService.addListing(formData);
   }
 
-  searchListings(): Observable<any>  {
-    return this.restAPIService.getListings();
+  searchListings(): Observable<any> {
+    return null; // this.restAPIService.getListings();
   }
 }

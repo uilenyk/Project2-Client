@@ -11,12 +11,17 @@ export class MessagesService {
 
 
 
-  getSentMessages(id: any): Observable<any> {
+  //   getSentMessages(id: any): Observable<any> {
+  //     //  return this.testMarketPlaceUser;
+  //     return this.restAPIService.sentMessages(id);
+  //  }
+  //  getRecievedMessages(id: any): Observable<any> {
+  //   //  return this.testMarketPlaceUser;
+  //   return this.restAPIService.recievedMessages(id);
+  // }
+
+  getMessages(id: any, type: string): Observable<any> {
     //  return this.testMarketPlaceUser;
-    return this.restAPIService.sentMessages(id);
- }
- getRecievedMessages(id: any): Observable<any> {
-  //  return this.testMarketPlaceUser;
-  return this.restAPIService.recievedMessages(id);
-}
+    return this.restAPIService.messages(id, type);
+  }
 }

@@ -1,67 +1,70 @@
 <div>
-    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light my-8">
-      <button (click)="loadHomePage()" class="btn btn-link homeBtnSize">Marketplace</button>
-      <form class="form-inline my-2 my-lg-0">
-        <div class="form-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="fas fa-tags"></i></span>
-            <input class="form-control" type="textarea" id="inputTags" name="inputTags" placeholder="Enter Tags"
-              [(ngModel)]="currentTag" (keydown.space)="addTag(currentTag)" />
-          </div>
+  <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light my-8">
+    <button (click)="loadHomePage()" class="btn btn-link homeBtnSize">Marketplace</button>
+    <form class="form-inline my-2 my-lg-0">
+      <div class="form-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><em class="fas fa-tags"></em></span>
+          <input class="form-control" type="textarea" id="inputTags" name="inputTags" placeholder="Enter Tags"
+            [(ngModel)]="currentTag" (keydown.space)="addTag(currentTag)" />
         </div>
-        <button (click)="searchListings()" class="btn btn-outline-success my-2 my-sm-0">Search</button>
-        <div class="max-tag-message" *ngIf="atMaxTags()">
-          Maximum number of tags reached.
-        </div>
-        <div class="chips">
-          <div class="chip" *ngFor="let tag of tags">
-            {{tag}}
-            <i class="fas fa-times" (click)="deleteTag(tag)"></i>
-          </div>
-        </div>
-      </form>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li *ngIf="!showSignIn" class="nav-item dropdown">
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <button (click)="loadUserListings()" class="dropdown-item">Your Listings</button>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Friends</a>
-              <div class="dropdown-divider"></div>
-              <button class="dropdown-item nav-link" href="http://localhost:4200/user-account">My Account</button>
-            </div>
-          </li>
-
-          <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Your Listings">
-            <i (click)="addListing()" class="fas fa-cart-plus fa-2x m-2"></i>
-          </li>
-          <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Messages">
-              <i (click)="messages()" class="fas fa-comments  fa-2x m-2"></i>
-            </li>
-          <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Friends">
-            <i (click)="goToFriends()" class="fas fa-address-book fa-2x m-2"></i>
-          </li>
-        </ul>
       </div>
+      <button (click)="searchListings()" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+      <div class="max-tag-message" *ngIf="atMaxTags()">
+        Maximum number of tags reached.
+      </div>
+      <div class="chips">
+        <div class="chip" *ngFor="let tag of tags">
+          {{tag}}
+          <em class="fas fa-times" (click)="deleteTag(tag)"></em>
+        </div>
+      </div>
+    </form>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown shiftLeft">
-          <a class="nav-link fas fa-ellipsis-v fa-2x m-2" id="navbarDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{username}}
-          </a>
+        <li *ngIf="!showSignIn" class="nav-item dropdown">
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <button *ngIf="!showSignIn" (click)="signOut()" name="button" class="dropdown-item btn login_btn btnSize">Sign Out</button>
+            <button (click)="loadUserListings()" class="dropdown-item">Your Listings</button>
             <div class="dropdown-divider"></div>
-            <button *ngIf="showSignIn" (click)="signIn()" name="button" class="dropdown-item btn login_btn btnSize">Sign In</button>
+            <a class="dropdown-item" href="#">Friends</a>
             <div class="dropdown-divider"></div>
-            <button *ngIf="showSignIn" (click)="signUp()" name="button" class="dropdown-item btn login_btn btnSize">Sign Up</button>
+            <button class="dropdown-item nav-link" href="http://localhost:4200/user-account">My Account</button>
           </div>
-          
+        </li>
+
+        <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Your Listings">
+          <em (click)="addListing()" class="fas fa-cart-plus fa-2x m-2"></em>
+        </li>
+        <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Messages">
+          <em (click)="messages()" class="fas fa-comments  fa-2x m-2"></em>
+        </li>
+        <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Friends">
+          <em (click)="goToFriends()" class="fas fa-address-book fa-2x m-2"></em>
         </li>
       </ul>
-    </nav>
-    <app-login *ngIf="showSignInView" (showSignEvent)="recieveShowSignInEvent($event)"></app-login>
-   <div *ngIf="listings" class="container align">
+    </div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown shiftLeft">
+        <a class="nav-link fas fa-ellipsis-v fa-2x m-2" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          {{username}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <button *ngIf="!showSignIn" (click)="signOut()" name="button" class="dropdown-item btn login_btn btnSize">Sign
+            Out</button>
+          <div class="dropdown-divider"></div>
+          <button *ngIf="showSignIn" (click)="signIn()" name="button" class="dropdown-item btn login_btn btnSize">Sign
+            In</button>
+          <div class="dropdown-divider"></div>
+          <button *ngIf="showSignIn" (click)="signUp()" name="button" class="dropdown-item btn login_btn btnSize">Sign
+            Up</button>
+        </div>
+
+      </li>
+    </ul>
+  </nav>
+  <app-login *ngIf="showSignInView" (showSignEvent)="recieveShowSignInEvent($event)"></app-login>
+  <div *ngIf="listings" class="container align">
     <table class="table table-bordered table-hover">
       <th>Active</th>
       <th>Name</th>
@@ -70,15 +73,16 @@
       <th>Expires</th>
       <th></th>
       <tr *ngFor="let list of listings">
-      <td>{{list.active}}</td> 
-      <td>{{list.name}}</td>  
-      <td>{{list.description}}</td>  
-      <td>{{list.price}}</td> 
-      <td>{{list.timeout | date: 'dd/MM/yyyy'}}</td> 
-      <td>
+        <td>{{list.active}}</td>
+        <td>{{list.name}}</td>
+        <td>{{list.description}}</td>
+        <td>{{list.price}}</td>
+        <td>{{list.timeout | date: 'dd/MM/yyyy'}}</td>
+        <td>
           <button (click)="buyListing()" class="btn btn-outline-success actions"> <span class="ml-1">Buy</span></button>
-          <button (click)="messageOwner()" class="btn btn-outline-success actions"> <span class="ml-1">Message</span></button>
-      </td>   
+          <button (click)="messageOwner()" class="btn btn-outline-success actions"> <span
+              class="ml-1">Message</span></button>
+        </td>
       </tr>
-        </table>
-        </div>
+    </table>
+  </div>

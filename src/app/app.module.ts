@@ -70,7 +70,7 @@ import { UserAccountComponent } from './components/user-account/user-account.com
     UserlistingsComponent,
     AddListingComponent,
     PhotoComponent,
-    MessagesComponent
+    MessagesComponent,
     UserAccountComponent
   ],
   imports: [

@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
       email: new FormControl(),
       password: new FormControl()
     });
-      }
+  }
 
   onSubmit() {
     const form = this.signupForm;
@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit {
       this.loginService.signUp(form.value).subscribe();
       this.router.navigateByUrl('marketPage');
     } else {
-     alert('Invalid form!');
+      alert('Invalid form!');
     }
   }
 

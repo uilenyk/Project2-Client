@@ -29,23 +29,37 @@ export class MessagesComponent implements OnInit {
     this.userId = this.cookie.get('mpuid');
   }
 
-  sentMessages() {
-    this.messages = [];
-    this.messageService.getSentMessages(this.userId)
-      .subscribe((payload) => {
-        console.log(payload);
-        for (const key in payload) {
-          if (payload.hasOwnProperty(key)) {
-            this.messages = payload;
-          }
-        }
-      },
-        (error) => console.log(error));
-    }
+  // sentMessages() {
+  //   this.messages = [];
+  //   this.messageService.getSentMessages(this.userId)
+  //     .subscribe((payload) => {
+  //       console.log(payload);
+  //       for (const key in payload) {
+  //         if (payload.hasOwnProperty(key)) {
+  //           this.messages = payload;
+  //         }
+  //       }
+  //     },
+  //       (error) => console.log(error));
+  //   }
 
-  recievedMessages() {
+  // recievedMessages() {
+  //   this.messages = [];
+  //   this.messageService.getRecievedMessages(this.userId)
+  //     .subscribe((payload) => {
+  //       console.log(payload);
+  //       for (const key in payload) {
+  //         if (payload.hasOwnProperty(key)) {
+  //           this.messages = payload;
+  //         }
+  //       }
+  //     },
+  //       (error) => console.log(error));
+  // }
+
+  fetchMessages(type: string) {
     this.messages = [];
-    this.messageService.getRecievedMessages(this.userId)
+    this.messageService.getMessages(this.userId, type)
       .subscribe((payload) => {
         console.log(payload);
         for (const key in payload) {

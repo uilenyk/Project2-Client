@@ -12,19 +12,21 @@ export class RestAPIService {
 
     constructor(private httpClient: HttpClient) { }
 
-    sentMessages(id: any) {
-        const url = `${this.URL}/message/sent/${id}`;
+    // sentMessages(id: any) {
+    //     const url = `${this.URL}/message/sent/${id}`;
+    //     return this.httpClient.get(url);
+    // }
+
+    // recievedMessages(id: any) {
+    //     const url = `${this.URL}/message/received/${id}`;
+    //     return this.httpClient.get(url);
+    // }
+
+    messages(id: any, type: string) {
+        const url = `${this.URL}/message/${type}/${id}`;
         return this.httpClient.get(url);
     }
 
-    recievedMessages(id: any) {
-        const url = `${this.URL}/message/received/${id}`;
-        return this.httpClient.get(url);
-    }
-
-    getListingsEndPoint(id: any) {
-        const url = `${this.URL}/market-place-users/${id}/listings`;
-    }
     signUp(signupRequest) {
         const url = `${this.URL}/unknown/signup`;
         return this.httpClient.post(url, signupRequest);
@@ -74,19 +76,4 @@ export class RestAPIService {
         const url = `${this.URL}/tags`;
         return this.httpClient.post(url, tag);
     }
-
-    getListings() {
-        const url = this.LISTING_END_POINTS.GET.listingURL;
-        return this.httpClient.get(url);
-    }
-    getTags() {
-        const url = `${this.apiURL}/tags`;
-        return this.httpClient.get(url);
-    }
-    
-    addTag(tag) {
-        const url = `${this.apiURL}/tags`;
-        return this.httpClient.post(url, tag);
-    }
-
 }
