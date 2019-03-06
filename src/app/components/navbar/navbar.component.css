@@ -22,3 +22,26 @@
   width: 20px !important;
   padding: 20px !important;
 }
+.chip {
+  display: inline-block;
+  padding: 0 25px;
+  height: 30px;
+  font-size: 16px;
+  line-height: 30px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+}
+
+.max-tag-message {
+  font-style: italic;
+  color: red;
+}
+
+.fa-times {
+  cursor: pointer;
+  opacity: .5;
+}
+
+.fa-times:hover {
+  opacity: .8;
+}

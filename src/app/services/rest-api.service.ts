@@ -52,4 +52,9 @@ export class RestAPIService {
         return this.httpClient.post(url, formData);
     }
 
+    searchListings(tags: any) {
+        const url = this.LISTING_END_POINTS.GET.listingURL;
+        return this.httpClient.get(url);
+    }
+
 }

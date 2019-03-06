@@ -15,7 +15,7 @@ export class UserlistingsComponent implements OnInit {
               ) { }
 
   listings: any;
-  id: any; 
+  id: any;
   showAddListing = false;
 
   recieveAddListingEvent(object) {

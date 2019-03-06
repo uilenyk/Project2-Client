@@ -2,8 +2,23 @@
   <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
     <button (click)="loadHomePage()" class="btn btn-link homeBtnSize">Marketplace</button> 
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <div class="form-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-tags"></i></span>
+            <input class="form-control" type="textarea" id="inputTags" name="inputTags" placeholder="Enter Tags"
+              [(ngModel)]="currentTag" (keydown.enter)="addTag(currentTag)" />
+          </div>
+        </div>
+        <button (click)="searchListings()" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <div class="max-tag-message" *ngIf="atMaxTags()">
+          Maximum number of tags reached.
+        </div>
+        <div class="chips">
+            <div class="chip" *ngFor="let tag of tags">
+              {{tag}}
+              <i class="fas fa-times" (click)="deleteTag(tag)"></i>
+            </div>
+        </div>
       </form>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
@@ -39,5 +54,20 @@
     </ul>
   </nav>
  <app-login *ngIf="showSignInView"(showSignEvent)="recieveShowSignInEvent($event)"></app-login> 
+ <div *ngIf="listings" class="container align">
+  <table class="table table-bordered table-hover">
+    <th>Active</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Expires</th>
 
-</div>
+    <tr *ngFor="let list of listings">
+    <td>{{list.active}}</td> 
+    <td>{{list.name}}</td>  
+    <td>{{list.description}}</td>  
+    <td>{{list.price}}</td> 
+    <td>{{list.timeout | date: 'dd/MM/yyyy'}}</td>    
+    </tr>
+      </table>
+      </div>
