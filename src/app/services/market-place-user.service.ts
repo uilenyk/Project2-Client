@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { RestAPIService } from './rest-api.service';
 import { Observable } from 'rxjs';
 import { MarketPlaceUser } from '../models/market-place-user';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class MarketPlaceUserService {
     return this.restAPIService.getMarketPlaceUser(id);
   }
 
-  updateUser(user: MarketPlaceUser) {
-    return this.restAPIService.updateMarketPlaceUser(user);
+  updateUser(form: FormGroup) {
+    return this.restAPIService.updateMarketPlaceUser(form);
   }
 }

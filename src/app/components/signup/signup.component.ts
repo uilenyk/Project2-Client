@@ -26,13 +26,26 @@ export class SignupComponent implements OnInit {
     this.signupForm = new FormGroup({
       firstName: new FormControl(),
       lastName: new FormControl(),
-      address: new FormControl(),
-      city: new FormControl(),
-      state: new FormControl(),
-      country: new FormControl(),
-      zipcode: new FormControl(),
-      email: new FormControl(),
-      password: new FormControl()
+      pseudoName: new FormControl(),
+      Address: new FormGroup({
+        streetName: new FormControl(),
+        streetNumber: new FormControl(),
+        city: new FormControl(),
+        state: new FormControl(),
+        zipCode: new FormControl()
+      }),
+      phoneNumber: new FormGroup({
+        phoneAreaCode: new FormControl(),
+        phoneFirstFour: new FormControl(),
+        phoneLastThree: new FormControl()
+      }),
+      creditCard: new FormGroup({
+        balance: new FormControl()
+      }),
+      credential: new FormGroup({
+        email: new FormControl(),
+        password: new FormControl(),
+      }),
     });
   }
 

@@ -80,5 +80,5 @@ export class RestAPIService {
     updateMarketPlaceUser(user) {
         const url = `${this.URL}/market-place-user/personal/update`;
         return this.httpClient.put(url, user);
-      }
+    }
 }
