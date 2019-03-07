@@ -4,13 +4,11 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { LoginService } from '../../services/login-service.service';
 import { MarketPlaceUserDataService } from '../../services/market-place-user-data.service';
 import { CookieService } from 'ngx-cookie-service';
 import { MarketPlaceUser } from '../../models/market-place-user';
 import { Router } from '@angular/router';
-
 
 @Component({
     selector: 'app-login',
@@ -54,7 +52,7 @@ export class LoginComponent implements OnInit {
         }
     }
 
-    private createLoginForm(): FormGroup {
+    private createLoginFormGroup(): FormGroup {
         return new FormGroup({
             email: new FormControl(),
             password: new FormControl()
@@ -66,5 +64,4 @@ export class LoginComponent implements OnInit {
         this.marketPlaceUserDataService.changeMarketPlaceUser(marketPlaceUser);
 
     }
-
 }

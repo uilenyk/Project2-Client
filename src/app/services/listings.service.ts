@@ -3,7 +3,6 @@ import { RestAPIService } from './rest-api.service';
 import { Observable } from 'rxjs';
 import { AnyLengthString } from 'aws-sdk/clients/comprehend';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +21,6 @@ export class ListingsService {
     return this.restAPIService.getListings();
   }
 
-  
   deleteListing(listid: any): Observable<any>{
     return this.restAPIService.deleteListing(listid);
   }

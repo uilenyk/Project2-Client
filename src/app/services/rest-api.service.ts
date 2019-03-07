@@ -137,4 +137,9 @@ export class RestAPIService {
         return this.httpClient.post(url, tag);
     }
 
+    addTag(tag) {
+        const url = `${this.URL}/tags`;
+        return this.httpClient.post(url, tag);
+    }
+
 }

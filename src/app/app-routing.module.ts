@@ -8,9 +8,6 @@ import { UserlistingsComponent } from './components/userlistings/userlistings.co
 import { PhotoComponent } from './components/photo/photo.component';
 import { RouteAuth } from 'src/app/routeAuth';
 import { switchMap } from 'rxjs/operators';
-// import { UserAccountComponent } from './components/user-account/user-account.component';
-
-
 
 const routes: Routes = [
 

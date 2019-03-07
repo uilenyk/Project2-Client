@@ -72,7 +72,6 @@ export class UserlistingsComponent implements OnInit {
     }
   }
 
-
   addListing() {
     this.listings = null;
     this.showAddListing = true;
@@ -90,8 +89,10 @@ export class UserlistingsComponent implements OnInit {
       },
         (error) => console.log(error));
   }
+  
   recieveAddListingEvent(object) {
     this.showAddListing = object.showAddListing;
   }
+
 
 }
