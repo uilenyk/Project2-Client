@@ -46,6 +46,11 @@ export class AddListingComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.marketPlaceUserDataService.currentMarketPlaceUser.subscribe((user) => {
+      if (user == null) {
+        this.router.navigateByUrl('');
+      }
+    });
     this.id = this.cookie.get('mpuid');
     this.listingForm = new FormGroup({
       name: new FormControl(),

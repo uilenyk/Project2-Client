@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RestAPIService } from './rest-api.service';
 import { Observable } from 'rxjs';
+import { AnyLengthString } from 'aws-sdk/clients/comprehend';
 
 
 @Injectable({
@@ -19,6 +20,23 @@ export class ListingsService {
 
   searchListings(): Observable<any>  {
     return this.restAPIService.getListings();
+  }
+
+  
+  deleteListing(listid: any): Observable<any>{
+    return this.restAPIService.deleteListing(listid);
+  }
+
+  updateListing(listid: any, listing: any): Observable<any> {
+    return this.restAPIService.updateListing(listid, listing);
+  }
+
+  patchListing(listid: any, makeInactiveRequest: any): Observable<any> {
+    return this.restAPIService.patchListing(listid, makeInactiveRequest);
+  }
+
+  buyListing(userId: any, listing: any): Observable<any>  {
+    return this.restAPIService.buyListing(userId, listing);
   }
 
 }

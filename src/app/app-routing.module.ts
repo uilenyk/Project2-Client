@@ -1,5 +1,4 @@
 import { MessagesComponent } from './components/messages/messages.component';
-import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './components/login/login.component';
 import { MarketPageComponent } from './components/market-page/market-page.component';
 import { NgModule } from '@angular/core';
@@ -15,9 +14,6 @@ const routes: Routes = [
   {
     path: '',
     component: MarketPageComponent
-  }, {
-    path: 'searchListings',
-    component: SearchComponent
   }, {
     path: 'login',
     component: LoginComponent

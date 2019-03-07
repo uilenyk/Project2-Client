@@ -1,7 +1,7 @@
 <div class="btn-group-vertical btnBorder align">
-    <button class = "btn btn-outline-success my-2 my-sm-0" (click)="recievedMessages()">Recieved Messages</button> 
+    <button class = "btn btn-outline-success my-2 my-sm-0" (click)="getMessages('received')">Recieved Messages</button> 
     <br>
-    <button class = "btn btn-outline-success my-2 my-sm-0" (click)="sentMessages()">Sent Messages</button> 
+    <button class = "btn btn-outline-success my-2 my-sm-0" (click)="getMessages('sent')">Sent Messages</button> 
   </div>
 
 <div *ngIf="messages" class="container align">
@@ -10,18 +10,50 @@
       <th>Content</th>
       <th>Time Sent</th>
       <th>Reciever</th>
-      
+      <th>Sender</th>
+
       <th></th>
       <tr *ngFor="let message of messages">
       <td>{{message.subject}}</td> 
       <td>{{message.content}}</td>  
       <td>{{message.created | date: 'dd/MM/yyyy/hh/mm/ss'}}</td>  
-      <td>{{message.reciever}}</td> 
-
-      <td>
-          <button (click)="reply()" class="btn btn-outline-success actions"> <span class="ml-1">Reply</span></button>
-          
+      <td>{{message.receiver.pseudoname}}</td> 
+      <td>{{message.sender.pseudoname}}</td> 
+      <td *ngIf="path == 'received'">
+          <button (click)="open(content, message)" class="btn btn-outline-success actions"> <span class="ml-1">Reply</span></button>
       </td>   
       </tr>
         </table>
         </div>
+
+        <ng-template #content let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup] ="messageForm" novalidate>
+                  <div class="form-group">
+                      <label for="subject">Subject</label>
+                      <div class="input-group">
+                        <input class="form-control" name ="subject" placeholder="Subject" formControlName="subject" required>
+                      </div>
+                    </div>
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <div class="input-group">
+                    <textarea rows="4" cols="50" class="form-control" name="message" placeholder="Message" formControlName="content" required ></textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" (click)="reply()">Send</button>
+            </div>
+          </ng-template>
+          
+          <hr>
+          
+          <pre>{{closeResult}}</pre>

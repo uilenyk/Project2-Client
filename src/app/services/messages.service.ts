@@ -9,14 +9,15 @@ export class MessagesService {
 
   constructor(private restAPIService: RestAPIService) { }
 
-
-
-  getSentMessages(id: any): Observable<any> {
+  sendMessage(username: any, message: any): Observable<any> {
     //  return this.testMarketPlaceUser;
-    return this.restAPIService.sentMessages(id);
- }
- getRecievedMessages(id: any): Observable<any> {
-  //  return this.testMarketPlaceUser;
-  return this.restAPIService.recievedMessages(id);
-}
-}
+    return this.restAPIService.sendMessage(username, message);
+  }
+
+  reply(id: any, username: any, message: any): Observable<any> {
+    return this.restAPIService.reply(id, username, message);
+  }
+
+  getMessages(id: any, path: any): Observable<any> {
+    return this.restAPIService.messages(id, path);
+  }}

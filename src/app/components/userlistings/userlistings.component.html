@@ -16,7 +16,12 @@
       <td>{{list.name}}</td>  
       <td>{{list.description}}</td>  
       <td>{{list.price}}</td> 
-      <td>{{list.timeout | date: 'dd/MM/yyyy'}}</td>    
+      <td>{{list.timeout | date: 'dd/MM/yyyy'}}</td>  
+      <td><select [(ngModel)]="action" (ngModelChange)="updateListing(list)" name="type" id="type">
+          <option value="" disabled selected>Update Listing</option>
+          <option value="1">Edit</option>
+          <option value="2">Make Inactive</option>
+        </select></td>    
       </tr>
         </table>
   </div>
