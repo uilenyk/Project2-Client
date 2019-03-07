@@ -6,8 +6,8 @@
   <title>Account Page</title>
 </head>
 
-<br><br>
-<div class="container-fluid well span6">
+<br><br><br><br>
+<div class="container-fluid well col-sm-12">
   <div class="row-fluid">
     <div class="span2">
       <img src="https://secure.gravatar.com/avatar/de9b11d0f9c0569ba917393ed5e5b3ab?s=140&r=g&d=mm" class="img-circle"
@@ -19,11 +19,12 @@
       <h6>Name: {{user.firstname}} {{user.lastname}}</h6>
       <h6>Email: {{user.credential.email}}</h6>
       <h6>Address: {{user.address.streetNumber}} {{user.address.streetName}}, {{user.address.city}}</h6>
-      <h6>         {{user.address.zipCode}}, {{user.address.state}}</h6>
-      <h6>Phone Number: ({{user.phoneNumber.areaCodeThree}}){{user.phoneNumber.blockThree}}-{{user.phoneNumber.blockFour}}</h6>
+      <h6> {{user.address.zipCode}}, {{user.address.state}}</h6>
+      <h6>Phone Number: {{user.phoneNumber.areaCodeThree}} - {{user.phoneNumber.blockThree}} - {{user.phoneNumber.blockFour}}</h6>
       <h6>Available Funds: ${{user.creditCard.Balance}}</h6>
-      <form *ngIf="changeDetails" class="form" [formGroup]="editUserForm" (ngSubmit)="onSubmit()" novalidate>
-        <div class="container span8">
+    </div>
+      <div *ngIf="changeDetails" class="container">
+      <form class="form" [formGroup]="editUserForm" (ngSubmit)="onSubmit()" novalidate>
           <div class="form-group row">
             <label for="firstName">First Name: </label>
             <input class="form-control" id="firstName" type="text" name="firstName" formControlName="firstName"
@@ -78,26 +79,24 @@
                 formControlName="phoneLastThree" maxlength="3" required>
             </div>
           </div>
-        </div>
         <input type="submit" name="Submit" class="btn btn-info btn-md" value="Submit">
       </form>
     </div>
-  </div>
 
   <div class="span2">
     <div class="btn-group">
-      <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+      <a class="btn dropdown-toggle btn-info text-right" data-toggle="dropdown" href="#">
         Action
         <span class="icon-cog icon-white"></span><span class="caret"></span>
       </a>
       <ul class="dropdown-menu">
-        <li><button *ngIf="!changeDetails" type="button" class="btn btn-info btn-md" onclick="editAccount()"><span
+        <li><button *ngIf="!changeDetails" type="button" class="btn btn-info btn-md col-sm-12" (click)="editAccount()"><span
               class="icon-wrench"></span> Edit Account Details</button></li>
-        <li><button *ngIf="changeDetails" type="button" class="btn btn-info btn-md" onclick="cancelEdit()"><span
+        <li><button *ngIf="changeDetails" type="button" class="btn btn-info btn-md col-sm-12" (click)="cancelEdit()"><span
               class="icon-remove"></span> Cancel Edits</button></li>
-        <li><button><span class="glyphicon glyphicon-usd"></span> Add Funds</button></li>
+        <li><button *ngIf="!changeDetails" type="button" class="btn btn-info btn-md col-sm-12" (click)="addFunds()"><span
+              class="icon-usd"></span> Add Funds</button></li>
       </ul>
     </div>
   </div>
-</div>
 </div>

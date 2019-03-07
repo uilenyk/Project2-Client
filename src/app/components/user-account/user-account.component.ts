@@ -21,9 +21,10 @@ export class UserAccountComponent implements OnInit {
   changeDetails: boolean;
   editUserForm: FormGroup;
 
-  constructor(private marketPlaceUserService: MarketPlaceUserService,
-              private cookie: CookieService,
-              private router: Router,
+  constructor(
+    private marketPlaceUserService: MarketPlaceUserService,
+    private cookie: CookieService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -38,25 +39,18 @@ export class UserAccountComponent implements OnInit {
       firstName: new FormControl(this.user.firstname),
       lastName: new FormControl(this.user.lastName),
       pseudoName: new FormControl(this.user.pseudoName),
-      Address: new FormGroup({
-        city: new FormControl(this.user.address.city),
-        state: new FormControl(this.user.address.state),
-        streetName: new FormControl(this.user.address.street),
-        streetNumber: new FormControl(this.user.address.streetNumber),
-        zipCode: new FormControl(this.user.address.zipCode)
-      }),
-      phoneNumber: new FormGroup({
-        phoneAreaCode: new FormControl(this.user.phoneNumber.phoneAreaCode),
-        phoneFirstFour: new FormControl(this.user.phoneNumber.phoneFirstFour),
-        phoneLastThree: new FormControl(this.user.phoneLastThree)
-      }),
-      credential: new FormGroup({
-        email: new FormControl(this.user.credential.email),
-        password: new FormControl(this.user.credential.password),
-      }),
-      creditCard: new FormGroup({
-        balance: new FormControl(this.user.creditCard.balance)
-      }),
+      city: new FormControl(this.user.address.city),
+      state: new FormControl(this.user.address.state),
+      streetName: new FormControl(this.user.address.street),
+      streetNumber: new FormControl(this.user.address.streetNumber),
+      zipCode: new FormControl(this.user.address.zipCode),
+      phoneid: new FormControl(this.user.phoneNumber.id),
+      phoneAreaCode: new FormControl(this.user.phoneNumber.phoneAreaCode),
+      phoneFirstFour: new FormControl(this.user.phoneNumber.phoneFirstFour),
+      phoneLastThree: new FormControl(this.user.phoneLastThree),
+      email: new FormControl(this.user.credential.email),
+      password: new FormControl(this.user.credential.password),
+      balance: new FormControl(this.user.creditCard.balance)
     });
   }
 
@@ -68,8 +62,35 @@ export class UserAccountComponent implements OnInit {
     this.changeDetails = false;
   }
 
+  addFunds() {
+    console.log('TO BE IMPLEMENTED');
+  }
+
   onSubmit() {
-    this.marketPlaceUserService.updateUser(this.editUserForm).subscribe((Response) => {
+    this.updateUser = {
+      mpuid: this.editUserForm.value.mpuid,
+      firstname: this.editUserForm.value.firstName,
+      lastname: this.editUserForm.value.lastName,
+      pseudoname: this.editUserForm.value.pseudoName,
+      address: {
+        city: this.editUserForm.value.city,
+        state: this.editUserForm.value.state,
+        streetName: this.editUserForm.value.streetName,
+        streetNumber: this.editUserForm.value.streetName,
+        zipCode: this.editUserForm.value.zipcode
+      },
+      phoneNumber: {
+        id: this.editUserForm.value.phoneid,
+        areaCodeThree: this.editUserForm.value.areaCodeThree,
+        blockFour: this.editUserForm.value.blockThree,
+        blockThree: this.editUserForm.value.blockFour
+      },
+      creditCard: {
+        Balance: this.editUserForm.value.balance
+      },
+      newMessage: this.editUserForm.value.newMessage
+    };
+    this.marketPlaceUserService.updateUser(this.updateUser).subscribe((Response) => {
       this.user = Response;
     });
   }

@@ -15,7 +15,7 @@ export class MarketPlaceUserService {
     return this.restAPIService.getMarketPlaceUser(id);
   }
 
-  updateUser(form: FormGroup) {
-    return this.restAPIService.updateMarketPlaceUser(form);
+  updateUser(user: MarketPlaceUser) {
+    return this.restAPIService.updateMarketPlaceUser(user);
   }
 }

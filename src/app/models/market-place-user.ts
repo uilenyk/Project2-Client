@@ -11,6 +11,5 @@ export class MarketPlaceUser {
     address: Address;
     creditCard: CreditCard;
     phoneNumber: PhoneNumber;
-    credential: Credential;
     newMessage: boolean;
 }
