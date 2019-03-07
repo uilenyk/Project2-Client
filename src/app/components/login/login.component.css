@@ -5,11 +5,12 @@ body {
     height: 100vh;
   }
   #login .container #login-row #login-column #login-box {
-    margin-top: 120px;
-    max-width: 600px;
-    height: 320px;
+    margin: auto;
+    max-width: 400px;
+    height: 220px;
     border: 1px solid #9C9C9C;
     background-color: #EAEAEA;
+    border-radius: 12px;
   }
   #login .container #login-row #login-column #login-box #login-form {
     padding: 20px;
@@ -24,4 +25,8 @@ body {
   .inputBox {
     width:350px;
     margin-left: 0 !important;
+  }
+
+  #register-link {
+    float:right;
   }

@@ -13,6 +13,7 @@
     background-image: linear-gradient(to bottom, #FFFFFF 0%, #D3D8E8 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    
     }
     legend{
         color:#141823;
@@ -39,6 +40,7 @@
       padding: 10px 20px 10px 20px;
       border: solid #3b6e22  1px;
       text-decoration: none;
+     
     }
     
     .signup-btn:hover {

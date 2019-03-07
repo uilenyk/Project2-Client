@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 export class MarketPlaceUserService {
 
   constructor(private restAPIService: RestAPIService) { }
-  getUser(id: any): Observable<any> {
+ // getUser(id: any): Observable<any> {
     //  return this.testMarketPlaceUser;
-    return this.restAPIService.getUserEndPoint(id);
-  }
+   // return this.restAPIService.getMarketPlaceUser(id);
+  //}
 }

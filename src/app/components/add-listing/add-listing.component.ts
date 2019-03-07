@@ -6,6 +6,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { componentFactoryName, ResourceLoader } from '@angular/compiler';
 import { MarketPlaceUser } from 'src/app/models/market-place-user';
 import { MarketPlaceUserDataService } from '../../services/market-place-user-data.service';
+import { PhotoService } from 'src/app/services/photo.service';
 
 
 @Component({
@@ -13,10 +14,13 @@ import { MarketPlaceUserDataService } from '../../services/market-place-user-dat
   templateUrl: './add-listing.component.html',
   styleUrls: ['./add-listing.component.css']
 })
+
+
 export class AddListingComponent implements OnInit {
-
+  
+  selectedFiles: FileList;
   constructor(private listingService: ListingsService,
-
+              private photoService: PhotoService,
               private cookie: CookieService,
               private router: Router,
               private marketPlaceUserDataService: MarketPlaceUserDataService
@@ -30,8 +34,23 @@ export class AddListingComponent implements OnInit {
   id: any;
   showAddListing;
   owner: any;
+  listid: any;
 
+  upload() {
+    const file = this.selectedFiles.item(0);
+    this.photoService.uploadfile(file);
+  }
+
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
+  }
+  
   ngOnInit() {
+    this.marketPlaceUserDataService.currentMarketPlaceUser.subscribe((user) => {
+      if (user == null) {
+        this.router.navigateByUrl('');
+      }
+    });
     this.id = this.cookie.get('mpuid');
     this.listingForm = new FormGroup({
       name: new FormControl(),
@@ -62,7 +81,15 @@ export class AddListingComponent implements OnInit {
     const form = this.listingForm;
     console.log(form);
     if (form.valid) {
-      this.listingService.addListing(form.value).subscribe();
+      this.listingService.addListing(form.value).subscribe(
+        (payload) => {
+        console.log(payload);
+       // this.listid = payload.listid;
+        this.listid = payload.listid;
+      }, (error) => console.log(error));
+     
+      //upload picture with isting id
+      //this.upload();
       this.router.navigateByUrl('');
     } else {
       alert('Invalid form!');

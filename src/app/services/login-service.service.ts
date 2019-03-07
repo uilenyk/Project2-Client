@@ -15,6 +15,6 @@ export class LoginService {
     }
 
     signUp(formData: any) {
-        return this.restAPIService.signUpEndPoint(formData);
+        return this.restAPIService.signUp(formData);
     }
 }
