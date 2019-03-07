@@ -65,15 +65,7 @@ export class RestAPIService {
         return this.httpClient.post(url, message);
     }
 
-    sentMessages(id: any) {
-        const url = `${environment.apiUrl}/message/sent/${id}`;
-        return this.httpClient.get(url);
-    }
 
-    recievedMessages(id: any) {
-        const url = `${environment.apiUrl}/message/received/${id}`;
-        return this.httpClient.get(url);
-    }
 
     messages(id: any, path: any) {
         const url = `${environment.apiUrl}/message/${path}/${id}`;
@@ -82,13 +74,38 @@ export class RestAPIService {
 
 
     getListingsEndPoint(id: any) {
-        const url = `${environment.apiUrl}/market-place-users/${id}/listings`;
+        const url = `${this.apiURL}/market-place-users/${id}/listings`;
+        return this.httpClient.get(url, id);
+    }
+    
+    signUp(signupRequest) {
+        const url = `${this.apiURL}/unknown/signup`;
+        return this.httpClient.post(url, signupRequest);
+    }
+
+    login(loginRequest) {
+        const url = `${this.apiURL}/unknown/login`;
+        return this.httpClient.post(url, loginRequest);
+    }
+
+    // getMarketPlaceUser(id) {
+    //     const url = `${this.URL}/market-place-users/${id}`;
+    //     return this.httpClient.get(url);
+    // }
+
+    // getMarketPlaceUserListings(id) {
+    //     const url = `${this.URL}/market-place-users/${id}/listings`;
+    //     return this.httpClient.get(url);
+    // }
+
+    getListing(id) {
+        const url = `${this.apiURL}/listings/${id}`;
         return this.httpClient.get(url);
     }
 
-    addListing(formData: any) {
-        const url = `${environment.apiUrl}/listings`;
-        return this.httpClient.post(url, formData);
+    addListing(listing) {
+        const url = `${this.apiURL}/tags`;
+        return this.httpClient.post(url, listing);
     }
 
     signUpEndPoint(formData: any) {
@@ -96,10 +113,15 @@ export class RestAPIService {
         return this.httpClient.post(url, formData);
     }
 
-    loginEndPoint(formData: any) {
-        const url = this.LOGIN_END_POINTS.POST.loginURL;
-        return this.httpClient.post(url, formData);
-    }
+    // getTags() {
+    //     const url = `${this.URL}/tags`;
+    //     return this.httpClient.get(url);
+    // }
+
+    // addTag(tag) {
+    //     const url = `${this.URL}/tags`;
+    //     return this.httpClient.post(url, tag);
+    // }
 
     getListings() {
         const url = this.LISTING_END_POINTS.GET.listingURL;

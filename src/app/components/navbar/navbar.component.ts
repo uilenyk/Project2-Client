@@ -80,10 +80,9 @@ export class NavbarComponent implements OnInit {
   }
 
   signIn() {
-    if (this.showSignInView == false) {
+    if (this.showSignInView === false) {
       this.showSignInView = true;
-    }
-    else {
+    } else {
       this.showSignInView = false;
     }
   }
@@ -131,14 +130,15 @@ export class NavbarComponent implements OnInit {
   }
 
   addTag(tag: string) {
-    if (this.tags.length < 4) {
+    if (this.tags.length < 2) {
       this.tags.push(tag);
     }
     this.currentTag = '';
   }
 
+
   atMaxTags(): boolean {
-    if (this.tags.length == 4) {
+    if (this.tags.length == 2) {
       return true;
     } else {
       return false;

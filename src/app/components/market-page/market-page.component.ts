@@ -15,11 +15,10 @@ export class MarketPageComponent implements OnInit {
   }
   username = this.cookie.get('id');
   marketplaceuser: MarketPlaceUser;
-  
-   
+
+
   ngOnInit() {
-    this.marketPlaceDataService.currentMarketPlaceUser.subscribe((marketplaceuser) =>
-    {
+    this.marketPlaceDataService.currentMarketPlaceUser.subscribe((marketplaceuser) => {
       this.marketplaceuser = marketplaceuser; });
     }
 

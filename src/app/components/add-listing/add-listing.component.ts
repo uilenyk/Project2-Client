@@ -67,11 +67,11 @@ export class AddListingComponent implements OnInit {
 
   close() {
     this.showAddListing = false;
-    this.showAddListingEvent.emit({showAddListing: this.showAddListing});
+    this.showAddListingEvent.emit({ showAddListing: this.showAddListing });
   }
   onSubmit() {
-    var date = new Date();
-    var timestamp = date.getTime();
+    const date = new Date();
+    const timestamp = date.getTime();
     this.marketPlaceUserDataService.currentMarketPlaceUser.subscribe((user) => {
       this.owner = user;
     });

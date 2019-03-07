@@ -20,6 +20,7 @@ import { AddListingComponent } from './components/add-listing/add-listing.compon
 import { PhotoComponent } from './components/photo/photo.component';
 import { PhotoService } from './services/photo.service';
 import { MessagesComponent } from './components/messages/messages.component';
+// import { UserAccountComponent } from './components/user-account/user-account.component';
 
 
 @NgModule({
