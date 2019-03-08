@@ -9,7 +9,7 @@
               [(ngModel)]="currentTag" (keydown.space)="addTag(currentTag)" />
           </div>
         </div>
-        <button (click)="searchListings()" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+        <button (click)="loadListings()" class="btn btn-outline-success my-2 my-sm-0">Search</button>
         <div class="max-tag-message" *ngIf="atMaxTags()">
           Maximum number of tags reached.
         </div>
@@ -40,6 +40,8 @@
             {{username}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <button *ngIf="!showSignIn" (click)="editAccount()" name="button" class="dropdown-item btn login_btn btnSize">Edit Account</button>
+              <div class="dropdown-divider"></div>
             <button *ngIf="!showSignIn" (click)="signOut()" name="button" class="dropdown-item btn login_btn btnSize">Sign Out</button>
             <div class="dropdown-divider"></div>
             <button *ngIf="showSignIn" (click)="signIn()" name="button" class="dropdown-item btn login_btn btnSize">Sign In</button>
@@ -51,7 +53,8 @@
       </ul>
     </nav>
     <app-login *ngIf="showSignInView" (showSignEvent)="recieveShowSignInEvent($event)"></app-login>
-   <div *ngIf="listings" class="container ride-sideNav">
+   
+  <!-- <div *ngIf="listings" class="container ride-sideNav">
     <table class="table table-bordered table-hover">
       <th>Active</th>
       <th>Name</th>
@@ -72,10 +75,11 @@
       </tr>
         </table>
         </div>
+      -->
 
         <ng-template #content let-modal>
             <div class="modal-header">
-              <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+              <h4 class="modal-title" id="modal-basic-title">Message</h4>
               <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
                 <span aria-hidden="true">&times;</span>
               </button>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,9 @@ export class PhotoService {
   constructor() { }
 
   FOLDER = 'project2/';
+
+  private imageSource = new BehaviorSubject<string>(null);
+  currentImage = this.imageSource.asObservable();
 
   uploadfile(file) {
 
@@ -34,7 +38,10 @@ export class PhotoService {
       }
 
       console.log('Successfully uploaded file.', data);
-      return true;
+      this.imageSource.next(data.Location);
+      // console.log("this is the location: "+this.image);
+
+      return data.Location;
     });
   }
 

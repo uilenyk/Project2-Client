@@ -11,7 +11,6 @@ export class LoginService {
     constructor(private restAPIService: RestAPIService) { }
 
     login(userData: any): Observable<any> {
-        console.log(userData);
         return this.restAPIService.login(userData);
     }
 

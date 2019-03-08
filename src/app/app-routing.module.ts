@@ -1,3 +1,4 @@
+import { ListingComponent } from './components/listing/listing.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { LoginComponent } from './components/login/login.component';
 import { MarketPageComponent } from './components/market-page/market-page.component';
@@ -33,6 +34,10 @@ const routes: Routes = [
       path: 'messages',
       component: MessagesComponent
   }
+  , {
+    path: 'loadListings',
+    component: ListingComponent
+}
   // },  {
   //   path: 'user-account',
   //   component: UserAccountComponent

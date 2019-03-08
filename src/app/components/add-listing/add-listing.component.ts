@@ -1,12 +1,15 @@
+
+import { NgSelectModule, NgOption } from '@ng-select/ng-select';
+import { TagService } from '../../services/tag.service';
+import { RestAPIService } from './../../services/rest-api.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ListingsService } from 'src/app/services/listings.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { componentFactoryName, ResourceLoader } from '@angular/compiler';
-import { MarketPlaceUser } from 'src/app/models/market-place-user';
 import { MarketPlaceUserDataService } from '../../services/market-place-user-data.service';
 import { PhotoService } from 'src/app/services/photo.service';
+import { promise } from 'protractor';
 
 
 @Component({
@@ -14,16 +17,16 @@ import { PhotoService } from 'src/app/services/photo.service';
   templateUrl: './add-listing.component.html',
   styleUrls: ['./add-listing.component.css']
 })
-
-
 export class AddListingComponent implements OnInit {
-  
+
   selectedFiles: FileList;
-  constructor(private listingService: ListingsService,
-              private photoService: PhotoService,
-              private cookie: CookieService,
-              private router: Router,
-              private marketPlaceUserDataService: MarketPlaceUserDataService
+  constructor(
+    private listingService: ListingsService,
+    private photoService: PhotoService,
+    private cookie: CookieService,
+    private router: Router,
+    private marketPlaceUserDataService: MarketPlaceUserDataService,
+    private tagService: TagService
   ) { }
 
   @Output()
@@ -35,16 +38,32 @@ export class AddListingComponent implements OnInit {
   showAddListing;
   owner: any;
   listid: any;
+  // tags = [
+  //   {
+  //     tagid: 6600,
+  //     tagname: 'electronics'
+  //   }
+  // ];
 
-  upload() {
+  tags: any;
+  userTag: any;
+  selectedTags: any[];
+
+  async upload() {
     const file = this.selectedFiles.item(0);
-    this.photoService.uploadfile(file);
+    const img = await this.photoService.uploadfile(file);
+    console.log("printing photo location: " + this.photoService.currentImage);
+    // this.photoService.currentImage.subscribe((data) => {
+    //   console.log(data);
+    this.listingForm.patchValue({ images: [{ location: img }] });
+    //});
   }
+
 
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
-  
+
   ngOnInit() {
     this.marketPlaceUserDataService.currentMarketPlaceUser.subscribe((user) => {
       if (user == null) {
@@ -56,18 +75,27 @@ export class AddListingComponent implements OnInit {
       name: new FormControl(),
       price: new FormControl(),
       description: new FormControl(),
-      tags: new FormControl(),
-      image: new FormControl(),
+      enteredTag: new FormControl(),
+      images: new FormControl(),
       timeout: new FormControl(),
       owner: new FormControl(),
       active: new FormControl()
     });
+    this.tagService.getTags().subscribe(res => {
+      console.log(res);
+      this.tags = res;
 
+    });
   }
 
   close() {
     this.showAddListing = false;
     this.showAddListingEvent.emit({ showAddListing: this.showAddListing });
+  }
+  updateTag(tag) {
+    this.userTag = tag;
+    console.log(this.userTag);
+
   }
   onSubmit() {
     const date = new Date();
@@ -75,24 +103,25 @@ export class AddListingComponent implements OnInit {
     this.marketPlaceUserDataService.currentMarketPlaceUser.subscribe((user) => {
       this.owner = user;
     });
+
+    this.listingForm.patchValue({ enteredTag: this.userTag });
     this.listingForm.patchValue({ owner: this.owner });
     this.listingForm.patchValue({ timeout: timestamp });
     this.listingForm.patchValue({ active: 'true' });
+    //this.upload();
     const form = this.listingForm;
-    console.log(form);
+    console.log(form.value);
     if (form.valid) {
+      this.upload();
       this.listingService.addListing(form.value).subscribe(
         (payload) => {
-        console.log(payload);
-       // this.listid = payload.listid;
-        this.listid = payload.listid;
-      }, (error) => console.log(error));
-     
-      //upload picture with isting id
-      //this.upload();
+          console.log(payload);
+          this.listid = payload.listid;
+        }, (error) => console.log(error));
       this.router.navigateByUrl('');
     } else {
       alert('Invalid form!');
     }
   }
+
 }
