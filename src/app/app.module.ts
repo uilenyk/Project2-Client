@@ -9,8 +9,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LandingComponent } from './components/landing/landing.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { SearchComponent } from './components/search/search.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -22,7 +20,8 @@ import { AddListingComponent } from './components/add-listing/add-listing.compon
 import { PhotoComponent } from './components/photo/photo.component';
 import { PhotoService } from './services/photo.service';
 import { MessagesComponent } from './components/messages/messages.component';
-// import { UserAccountComponent } from './components/user-account/user-account.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +34,8 @@ import { MessagesComponent } from './components/messages/messages.component';
     UserlistingsComponent,
     AddListingComponent,
     PhotoComponent,
-    MessagesComponent
+    MessagesComponent,
+    UserAccountComponent
   ],
   imports: [
     FormsModule,

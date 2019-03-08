@@ -1,4 +1,5 @@
 <div class="btn-group-vertical btnBorder align">
+<<<<<<< HEAD
     <button class = "btn btn-outline-success my-2 my-sm-0" (click)="getMessages('received')">Recieved Messages</button> 
     <br>
     <button class = "btn btn-outline-success my-2 my-sm-0" (click)="getMessages('sent')">Sent Messages</button> 
@@ -57,3 +58,31 @@
           <hr>
           
           <pre>{{closeResult}}</pre>
+=======
+  <button class="btn btn-outline-success my-2 my-sm-0" (click)="fetchMessages('received')">Received Messages</button>
+  <br>
+  <button class="btn btn-outline-success my-2 my-sm-0" (click)="fetchMessages('sent')">Sent Messages</button>
+</div>
+
+<div *ngIf="messages" class="container align">
+  <table class="table table-bordered table-hover">
+    <th>Subject</th>
+    <th>Content</th>
+    <th>Time Sent</th>
+    <th>Reciever</th>
+
+    <th></th>
+    <tr *ngFor="let message of messages">
+      <td>{{message.subject}}</td>
+      <td>{{message.content}}</td>
+      <td>{{message.created | date: 'dd/MM/yyyy/hh/mm/ss'}}</td>
+      <td>{{message.reciever}}</td>
+
+      <td>
+        <button (click)="reply()" class="btn btn-outline-success actions"> <span class="ml-1">Reply</span></button>
+
+      </td>
+    </tr>
+  </table>
+</div>
+>>>>>>> EvaineDemoBranch

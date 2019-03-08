@@ -8,9 +8,8 @@ export class MarketPlaceUser {
     firstname: string;
     lastname: string;
     pseudoname: string;
-    email: string;
-    newMessage: boolean;
     address: Address;
     creditCard: CreditCard;
     phoneNumber: PhoneNumber;
+    newMessage: boolean;
 }

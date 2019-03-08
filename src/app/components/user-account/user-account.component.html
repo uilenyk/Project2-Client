@@ -5,35 +5,98 @@
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <title>Account Page</title>
 </head>
-<!------ Include the above in your HEAD tag ---------->
 
-<br><br>
-<div class="container-fluid well span6">
+<br><br><br><br>
+<div class="container-fluid well col-sm-12">
   <div class="row-fluid">
     <div class="span2">
       <img src="https://secure.gravatar.com/avatar/de9b11d0f9c0569ba917393ed5e5b3ab?s=140&r=g&d=mm" class="img-circle"
         alt="">
     </div>
 
-    <div class="span8">
-      <h3>User Name</h3>
-      <h6>Email: MyEmail@servidor.com</h6>
-      <h6>Ubication: Colombia</h6>
-      <h6></h6>
-      <h6>Available Funds:</h6>
+    <div *ngIf="!changeDetails" class="span8">
+      <h3>{{user.pseudoname}}</h3>
+      <h6>Name: {{user.firstname}} {{user.lastname}}</h6>
+      <h6>Email: {{user.credential.email}}</h6>
+      <h6>Address: {{user.address.streetNumber}} {{user.address.streetName}}, {{user.address.city}}</h6>
+      <h6> {{user.address.zipCode}}, {{user.address.state}}</h6>
+      <h6>Phone Number: {{user.phoneNumber.areaCodeThree}} - {{user.phoneNumber.blockThree}} - {{user.phoneNumber.blockFour}}</h6>
+      <h6>Available Funds: ${{user.creditCard.Balance}}</h6>
+    </div>
+      <div *ngIf="changeDetails" class="container">
+      <form class="form" [formGroup]="editUserForm" (ngSubmit)="onSubmit()" novalidate>
+          <div class="form-group row">
+            <label for="firstName">First Name: </label>
+            <input class="form-control" id="firstName" type="text" name="firstName" formControlName="firstName"
+              required>
+          </div>
+          <div class="form-group row">
+            <label for="lastName">Last Name: </label>
+            <input class="form-control" id="lastName" type="text" name="lastName" formControlName="lastName" required>
+          </div>
+          <div class="form-group row">
+            <label for="pseudoName">Pseudoname: </label>
+            <input class="form-control" id="pseudoName" type="text" name="pseudoName" formControlName="pseudoName"
+              required>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-6">
+              <label for="streetNumber">Street Number: </label>
+              <input class="form-control" id="streetNumber" type="number" name="streetNumber"
+                formControlName="streetNumber" required>
+            </div>
+            <div class="col-sm-6">
+              <label for="streetName">Street Name: </label>
+              <input class="form-control" id="streetName" type="text" name="streetName" formControlName="streetName"
+                required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="city">City: </label>
+            <input class="form-control" id="city" type="text" name="city" formControlName="city" required>
+          </div>
+          <div class="form-group row">
+            <label for="state">State: </label>
+            <input class="form-control" id="state" type="text" name="state" formControlName="state" required>
+          </div>
+          <div class="form-group row">
+            <label for="zipCode">Zip Code: </label>
+            <input class="form-control" id="zipCode" type="number" name="zipCode" formControlName="zipCode"
+              maxlength="5" required>
+          </div>
+          <label for="PhoneNumberGroup">Phone Number: </label>
+          <div name="PhoneNumberGroup" class="form-group row">
+            <div class="col-sm-4">
+              <input class="form-control" id="phoneAreaCode" type="number" name="phoneAreaCode"
+                formControlName="phoneAreaCode" maxlength="3" required>
+            </div>
+            <div class="col-sm-4">
+              <input class="form-control" id="phoneFirstFour" type="number" name="phoneFirstFour"
+                formControlName="phoneFirstFour" maxlength="4" required>
+            </div>
+            <div class="col-sm-4">
+              <input class="form-control" id="phoneLastThree" type="number" name="phoneLastThree"
+                formControlName="phoneLastThree" maxlength="3" required>
+            </div>
+          </div>
+        <input type="submit" name="Submit" class="btn btn-info btn-md" value="Submit">
+      </form>
     </div>
 
-    <div class="span2">
-      <div class="btn-group">
-        <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
-          Action
-          <span class="icon-cog icon-white"></span><span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="#"><span class="icon-wrench"></span> Modify</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-usd"></span> Add Funds</a></li>
-        </ul>
-      </div>
+  <div class="span2">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle btn-info text-right" data-toggle="dropdown" href="#">
+        Action
+        <span class="icon-cog icon-white"></span><span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><button *ngIf="!changeDetails" type="button" class="btn btn-info btn-md col-sm-12" (click)="editAccount()"><span
+              class="icon-wrench"></span> Edit Account Details</button></li>
+        <li><button *ngIf="changeDetails" type="button" class="btn btn-info btn-md col-sm-12" (click)="cancelEdit()"><span
+              class="icon-remove"></span> Cancel Edits</button></li>
+        <li><button *ngIf="!changeDetails" type="button" class="btn btn-info btn-md col-sm-12" (click)="addFunds()"><span
+              class="icon-usd"></span> Add Funds</button></li>
+      </ul>
     </div>
   </div>
 </div>

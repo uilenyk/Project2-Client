@@ -15,9 +15,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class NavbarComponent implements OnInit {
 
-  isDeleted: boolean = false;
-  currentTag: string = '';
-  maxTags: boolean = false;
+  isDeleted = false;
+  currentTag = '';
+  maxTags = false;
   tags: Array<string> = [];
   showSignIn = true;
   showSignInView = false;
@@ -33,12 +33,12 @@ export class NavbarComponent implements OnInit {
 
 
   constructor(private marketPlaceDataService: MarketPlaceUserDataService,
-    private cookie: CookieService,
-    private router: Router,
-    private listingService: ListingsService,
-    private messageService: MessagesService,
-    private modalService: NgbModal,
-    private zone: NgZone) { }
+              private cookie: CookieService,
+              private router: Router,
+              private listingService: ListingsService,
+              private messageService: MessagesService,
+              private modalService: NgbModal,
+              private zone: NgZone) { }
 
 
   buyListing(listing: any) {
@@ -99,10 +99,10 @@ export class NavbarComponent implements OnInit {
           //     this.listings = payload;
           //  }
           // this.tags.values;
-          //data.location //data beings just some variable
+          // data.location //data beings just some variable
           // this.dataSource.data = payload;
 
-          //get owner from this payload to use for sending and buying
+          // get owner from this payload to use for sending and buying
           this.listings = payload;
         }
       }
@@ -126,7 +126,7 @@ export class NavbarComponent implements OnInit {
 
 
   deleteTag(tag: string) {
-    this.tags.splice(this.tags.indexOf(tag), 1)
+    this.tags.splice(this.tags.indexOf(tag), 1);
   }
 
   addTag(tag: string) {
@@ -138,7 +138,7 @@ export class NavbarComponent implements OnInit {
 
 
   atMaxTags(): boolean {
-    if (this.tags.length == 2) {
+    if (this.tags.length === 2) {
       return true;
     } else {
       return false;

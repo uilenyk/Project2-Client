@@ -17,11 +17,11 @@ export class ListingsService {
     return this.restAPIService.addListing(formData);
   }
 
-  searchListings(): Observable<any>  {
-    return this.restAPIService.getListings();
+  searchListings(): Observable<any> {
+    return null; // this.restAPIService.getListings();
   }
 
-  deleteListing(listid: any): Observable<any>{
+  deleteListing(listid: any): Observable<any> {
     return this.restAPIService.deleteListing(listid);
   }
 

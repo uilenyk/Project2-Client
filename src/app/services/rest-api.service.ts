@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class RestAPIService {
 
-    private apiURL = environment.apiUrl;
+    private apiURL = environment.apiURL;
 
     /*
     * Register GET, POST, PUT, and other http request types here
@@ -35,40 +35,40 @@ export class RestAPIService {
     constructor(private httpClient: HttpClient) { }
 
     buyListing(userId: any, listing: any) {
-        const url = `${environment.apiUrl}/listings/${userId}`;
+        const url = `${environment.apiURL}/listings/${userId}`;
         return this.httpClient.put(url, listing);
     }
 
-    deleteListing(listid: any){
-        const url = `${environment.apiUrl}/listings/${listid}`;
+    deleteListing(listid: any) {
+        const url = `${environment.apiURL}/listings/${listid}`;
         return this.httpClient.delete(url);
     }
 
-    updateListing(listid: any, listing: any){
-        const url = `${environment.apiUrl}/listings/${listid}`;
+    updateListing(listid: any, listing: any) {
+        const url = `${environment.apiURL}/listings/${listid}`;
         return this.httpClient.patch(url, listing);
     }
 
-    patchListing(listid: any, makeInactiveRequest: any){
-        const url = `${environment.apiUrl}/listings/${listid}/active`;
+    patchListing(listid: any, makeInactiveRequest: any) {
+        const url = `${environment.apiURL}/listings/${listid}/active`;
         console.log(url);
         return this.httpClient.patch(url, makeInactiveRequest);
     }
 
     sendMessage(username: any, message: any) {
-        const url = `${environment.apiUrl}/message/send/${username}`;
+        const url = `${environment.apiURL}/message/send/${username}`;
         return this.httpClient.post(url, message);
     }
 
     reply(id: any, username: any, message: any) {
-        const url = `${environment.apiUrl}/message/reply/${id}/${username}`;
+        const url = `${environment.apiURL}/message/reply/${id}/${username}`;
         return this.httpClient.post(url, message);
     }
 
 
 
     messages(id: any, path: any) {
-        const url = `${environment.apiUrl}/message/${path}/${id}`;
+        const url = `${environment.apiURL}/message/${path}/${id}`;
         return this.httpClient.get(url);
     }
 
@@ -77,7 +77,7 @@ export class RestAPIService {
         const url = `${this.apiURL}/market-place-users/${id}/listings`;
         return this.httpClient.get(url, id);
     }
-    
+
     signUp(signupRequest) {
         const url = `${this.apiURL}/unknown/signup`;
         return this.httpClient.post(url, signupRequest);
@@ -88,10 +88,10 @@ export class RestAPIService {
         return this.httpClient.post(url, loginRequest);
     }
 
-    // getMarketPlaceUser(id) {
-    //     const url = `${this.URL}/market-place-users/${id}`;
-    //     return this.httpClient.get(url);
-    // }
+    getMarketPlaceUser(id) {
+        const url = `${this.apiURL}/market-place-users/${id}`;
+        return this.httpClient.get(url);
+    }
 
     // getMarketPlaceUserListings(id) {
     //     const url = `${this.URL}/market-place-users/${id}/listings`;
@@ -108,9 +108,9 @@ export class RestAPIService {
         return this.httpClient.post(url, listing);
     }
 
-    signUpEndPoint(formData: any) {
-        const url = this.SIGNUP_END_POINTS.POST.signupURL;
-        return this.httpClient.post(url, formData);
+    getMarketPlaceUserListings(id) {
+        const url = `${this.apiURL}/market-place-users/${id}/listings`;
+        return this.httpClient.get(url);
     }
 
     // getTags() {
@@ -127,6 +127,7 @@ export class RestAPIService {
         const url = this.LISTING_END_POINTS.GET.listingURL;
         return this.httpClient.get(url);
     }
+
     getTags() {
         const url = `${this.apiURL}/tags`;
         return this.httpClient.get(url);
@@ -137,9 +138,8 @@ export class RestAPIService {
         return this.httpClient.post(url, tag);
     }
 
-    addTag(tag) {
-        const url = `${this.URL}/tags`;
-        return this.httpClient.post(url, tag);
+    updateMarketPlaceUser(user) {
+        const url = `${this.apiURL}/market-place-user/personal/update`;
+        return this.httpClient.put(url, user);
     }
-
 }
