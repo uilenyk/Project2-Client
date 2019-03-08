@@ -1,0 +1,30 @@
+<div class="btn-group-vertical btnBorder align">
+    <button class = "btn btn-outline-success my-2 my-sm-0" (click)="addListing()">Add Listing</button> 
+    <br>
+    <button class = "btn btn-outline-success my-2 my-sm-0" (click)="getListings()">View Your Listings</button> 
+  </div>
+<div class="container align">
+    <table class="table table-bordered table-hover" *ngIf="listings">
+      <th>Active</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Expires</th>
+
+      <tr *ngFor="let list of listings">
+      <td>{{list.active}}</td> 
+      <td>{{list.name}}</td>  
+      <td>{{list.description}}</td>  
+      <td>{{list.price}}</td> 
+      <td>{{list.timeout | date: 'dd/MM/yyyy'}}</td>  
+      <td><select [(ngModel)]="action" (ngModelChange)="updateListing(list)" name="type" id="type">
+          <option value="" disabled selected>Update Listing</option>
+          <option value="1">Edit</option>
+          <option value="2">Make Inactive</option>
+        </select></td>    
+      </tr>
+        </table>
+  </div>
+  <div class="container align">
+      <app-add-listing *ngIf="showAddListing" (showAddListingEvent)="recieveAddListingEvent($event)"></app-add-listing>
+  </div>

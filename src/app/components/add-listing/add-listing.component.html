@@ -1,0 +1,36 @@
+<div class="container " id="wrap">
+    <button (click)="close()" type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form [formGroup]="listingForm" (ngSubmit)="onSubmit()" novalidate class="form">
+                <legend>Add Listing</legend>
+                <h4>It's free and always will be.</h4>
+                <div class="row">
+                    <div class="col-xs-6 col-md-6">
+                        <input type="text" formControlName="name" class="form-control input-lg"
+                            placeholder="Product Name" required />
+                    </div>
+                    <div class="col-xs-6 col-md-6">
+                        <textarea rows="8" cols="50" formControlName="description" class="form-control input-lg"
+                            placeholder="Description" required></textarea>
+                    </div>
+                </div>
+
+                <input type="text" formControlName="price" class="form-control input-lg" placeholder="Price" required />
+                <input type="text" formControlName="tags" class="form-control input-lg" placeholder="Tags" />
+                <input type="text" formControlName="image" class="form-control input-lg" placeholder="Image" />
+
+                <label class="btn btn-default my-2">
+                    <input type="file" (change)="selectFile($event)">
+                </label>
+                <span class="help-block">By clicking Add Listing, you agree to our Terms and that you have read our Data
+                    Use Policy, including our Cookie Use.</span>
+                <input [disabled]="!selectedFiles" type="submit" name="submit" class="btn btn-lg btn-primary btn-block signup-btn"
+                    value="Upload Listing">
+
+            </form>
+        </div>
+        </div>
+        </div>
