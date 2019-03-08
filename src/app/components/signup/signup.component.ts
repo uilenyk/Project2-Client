@@ -17,7 +17,7 @@ import { MarketPlaceUser } from 'src/app/models/market-place-user';
 export class SignupComponent implements OnInit {
 
   signupForm: FormGroup;
-  createdUser: MarketPlaceUser;
+  createdUser: any;
   constructor(
     private loginService: LoginService,
     private router: Router) { }
@@ -43,29 +43,28 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     const form = this.signupForm;
     this.createdUser = {
-      mpuid: null,
-      firstname: this.signupForm.value.firstName,
-      lastname: this.signupForm.value.lastName,
-      pseudoname: this.signupForm.value.pseudoName,
-      address: {
-        city: this.signupForm.value.city,
-        state: this.signupForm.value.state,
-        streetName: this.signupForm.value.streetName,
-        streetNumber: this.signupForm.value.streetName,
-        zipCode: this.signupForm.value.zipcode
-      },
-      phoneNumber: {
-        id: null,
-        areaCodeThree: this.signupForm.value.areaCodeThree,
-        blockFour: this.signupForm.value.blockThree,
-        blockThree: this.signupForm.value.blockFour
-      },
-      creditCard: {
-        Balance: 0
-      },
-      newMessage: false
+      email: this.signupForm.value.email,
+      password: this.signupForm.value.password,
+      marketPlaceUser: {
+        firstname: this.signupForm.value.firstName,
+        lastname: this.signupForm.value.lastName,
+        pseudoname: this.signupForm.value.pseudoName,
+        address: {
+          city: this.signupForm.value.city,
+          state: this.signupForm.value.state,
+          streetname: this.signupForm.value.streetName,
+          streetnumber: this.signupForm.value.streetNumber,
+          zipcode: this.signupForm.value.zipcode
+        },
+        phoneNumber: {
+          areaCodeThree: this.signupForm.value.phoneAreaCode,
+          blockFour: this.signupForm.value.phoneFirstFour,
+          blockThree: this.signupForm.value.phoneLastThree
+        }
+      }
     };
     if (form.valid) {
+      console.log(this.createdUser);
       this.loginService.signUp(this.createdUser).subscribe();
       this.router.navigateByUrl('marketPage');
     } else {

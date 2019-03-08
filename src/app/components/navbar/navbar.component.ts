@@ -136,6 +136,9 @@ export class NavbarComponent implements OnInit {
     this.currentTag = '';
   }
 
+  editAccount(){
+    this.router.navigateByUrl('user-account');
+  }
 
   atMaxTags(): boolean {
     if (this.tags.length === 2) {

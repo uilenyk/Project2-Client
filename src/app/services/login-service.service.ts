@@ -15,6 +15,7 @@ export class LoginService {
     }
 
     signUp(formData: any) {
+        console.log(formData);
         return this.restAPIService.signUp(formData);
     }
 }

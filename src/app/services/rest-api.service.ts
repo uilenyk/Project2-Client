@@ -138,8 +138,8 @@ export class RestAPIService {
         return this.httpClient.post(url, tag);
     }
 
-    updateMarketPlaceUser(user) {
-        const url = `${this.apiURL}/market-place-user/personal/update`;
+    updateMarketPlaceUser(user: any) {
+        const url = `${this.apiURL}/market-place-users/personal/update`;
         return this.httpClient.put(url, user);
     }
 }

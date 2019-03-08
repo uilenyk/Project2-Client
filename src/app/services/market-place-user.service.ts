@@ -15,7 +15,7 @@ export class MarketPlaceUserService {
     return this.restAPIService.getMarketPlaceUser(id);
   }
 
-  updateUser(user: MarketPlaceUser) {
+  updateUser(user: any) {
     return this.restAPIService.updateMarketPlaceUser(user);
   }
 }

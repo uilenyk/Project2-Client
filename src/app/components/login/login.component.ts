@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.cookie.deleteAll();
-        this.loginForm = this.createLoginForm();
+        this.loginForm = this.createLoginFormGroup();
     }
 
     onSubmit() {

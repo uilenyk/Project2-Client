@@ -17,37 +17,35 @@
     <div *ngIf="!changeDetails" class="span8">
       <h3>{{user.pseudoname}}</h3>
       <h6>Name: {{user.firstname}} {{user.lastname}}</h6>
-      <h6>Email: {{user.credential.email}}</h6>
-      <h6>Address: {{user.address.streetNumber}} {{user.address.streetName}}, {{user.address.city}}</h6>
-      <h6> {{user.address.zipCode}}, {{user.address.state}}</h6>
+      <h6>Address: {{user.address.streetnumber}} {{user.address.streetname}}, {{user.address.city}}</h6>
+      <h6>         {{user.address.zipcode}}, {{user.address.state}}</h6>
       <h6>Phone Number: {{user.phoneNumber.areaCodeThree}} - {{user.phoneNumber.blockThree}} - {{user.phoneNumber.blockFour}}</h6>
-      <h6>Available Funds: ${{user.creditCard.Balance}}</h6>
     </div>
       <div *ngIf="changeDetails" class="container">
       <form class="form" [formGroup]="editUserForm" (ngSubmit)="onSubmit()" novalidate>
           <div class="form-group row">
-            <label for="firstName">First Name: </label>
-            <input class="form-control" id="firstName" type="text" name="firstName" formControlName="firstName"
+            <label for="firstname">First Name: </label>
+            <input class="form-control" id="firstname" type="text" name="firstname" formControlName="firstname"
               required>
           </div>
           <div class="form-group row">
-            <label for="lastName">Last Name: </label>
-            <input class="form-control" id="lastName" type="text" name="lastName" formControlName="lastName" required>
+            <label for="lastname">Last Name: </label>
+            <input class="form-control" id="lastname" type="text" name="lastname" formControlName="lastname" required>
           </div>
           <div class="form-group row">
-            <label for="pseudoName">Pseudoname: </label>
-            <input class="form-control" id="pseudoName" type="text" name="pseudoName" formControlName="pseudoName"
+            <label for="pseudoname">Pseudoname: </label>
+            <input class="form-control" id="pseudoname" type="text" name="pseudoname" disabled formControlName="pseudoname"
               required>
           </div>
           <div class="form-group row">
             <div class="col-sm-6">
-              <label for="streetNumber">Street Number: </label>
-              <input class="form-control" id="streetNumber" type="number" name="streetNumber"
-                formControlName="streetNumber" required>
+              <label for="streetnumber">Street Number: </label>
+              <input class="form-control" id="streetnumber" type="number" name="streetnumber"
+                formControlName="streetnumber" required>
             </div>
             <div class="col-sm-6">
-              <label for="streetName">Street Name: </label>
-              <input class="form-control" id="streetName" type="text" name="streetName" formControlName="streetName"
+              <label for="streetname">Street Name: </label>
+              <input class="form-control" id="streetname" type="text" name="streetname" formControlName="streetname"
                 required>
             </div>
           </div>
@@ -60,26 +58,26 @@
             <input class="form-control" id="state" type="text" name="state" formControlName="state" required>
           </div>
           <div class="form-group row">
-            <label for="zipCode">Zip Code: </label>
-            <input class="form-control" id="zipCode" type="number" name="zipCode" formControlName="zipCode"
+            <label for="zipcode">Zip Code: </label>
+            <input class="form-control" id="zipcode" type="number" name="zipcode" formControlName="zipcode"
               maxlength="5" required>
           </div>
           <label for="PhoneNumberGroup">Phone Number: </label>
           <div name="PhoneNumberGroup" class="form-group row">
             <div class="col-sm-4">
-              <input class="form-control" id="phoneAreaCode" type="number" name="phoneAreaCode"
-                formControlName="phoneAreaCode" maxlength="3" required>
+              <input class="form-control" id="areaCodeThree" type="number" name="areaCodeThree"
+                formControlName="areaCodeThree" maxlength="3" required>
             </div>
             <div class="col-sm-4">
-              <input class="form-control" id="phoneFirstFour" type="number" name="phoneFirstFour"
-                formControlName="phoneFirstFour" maxlength="4" required>
+              <input class="form-control" id="blockThree" type="number" name="blockThree"
+                formControlName="blockThree" maxlength="3" required>
             </div>
             <div class="col-sm-4">
-              <input class="form-control" id="phoneLastThree" type="number" name="phoneLastThree"
-                formControlName="phoneLastThree" maxlength="3" required>
+              <input class="form-control" id="blockFour" type="number" name="blockFour"
+                formControlName="blockFour" maxlength="4" required>
             </div>
           </div>
-        <input type="submit" name="Submit" class="btn btn-info btn-md" value="Submit">
+        <input type="submit" name="Submit" class="btn btn-info btn-md" (click)="onSubmit()" value="Submit">
       </form>
     </div>
 

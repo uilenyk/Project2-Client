@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MarketPlaceUser } from 'src/app/models/market-place-user';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { MarketPlaceUserService } from 'src/app/services/market-place-user.service';
@@ -9,6 +8,7 @@ import { PhoneNumber } from 'src/app/models/phonenumber';
 import { CreditCard } from 'src/app/models/creditcard';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MarketPlaceUserDataService } from 'src/app/services/market-place-user-data.service';
+import { MarketPlaceUser } from '../../models/market-place-user';
 
 @Component({
   selector: 'app-user-account',
@@ -17,8 +17,8 @@ import { MarketPlaceUserDataService } from 'src/app/services/market-place-user-d
 })
 export class UserAccountComponent implements OnInit {
 
-  user;
-  updateUser: MarketPlaceUser;
+  user: any;
+  updateUser: any;
   changeDetails: boolean;
   editUserForm: FormGroup;
 
@@ -32,7 +32,7 @@ export class UserAccountComponent implements OnInit {
   ngOnInit() {
     this.marketPlaceUser.currentMarketPlaceUser.subscribe((user) => {
       if (user == null) {
-        this.router.navigateByUrl('login');
+        this.router.navigateByUrl('marketPage');
       }
     });
     this.changeDetails = false;
@@ -41,27 +41,23 @@ export class UserAccountComponent implements OnInit {
       console.log(Response);
       this.updateUser = this.user;
     });
-    this.editUserForm = new FormGroup({
-      mpuid: new FormControl(this.user.mpuid),
-      firstName: new FormControl(this.user.firstname),
-      lastName: new FormControl(this.user.lastName),
-      pseudoName: new FormControl(this.user.pseudoName),
-      city: new FormControl(this.user.address.city),
-      state: new FormControl(this.user.address.state),
-      streetName: new FormControl(this.user.address.street),
-      streetNumber: new FormControl(this.user.address.streetNumber),
-      zipCode: new FormControl(this.user.address.zipCode),
-      phoneid: new FormControl(this.user.phoneNumber.id),
-      phoneAreaCode: new FormControl(this.user.phoneNumber.phoneAreaCode),
-      phoneFirstFour: new FormControl(this.user.phoneNumber.phoneFirstFour),
-      phoneLastThree: new FormControl(this.user.phoneLastThree),
-      email: new FormControl(this.user.credential.email),
-      password: new FormControl(this.user.credential.password),
-      balance: new FormControl(this.user.creditCard.balance)
-    });
   }
 
   editAccount() {
+    this.editUserForm = new FormGroup({
+      mpuid: new FormControl(this.user.mpuid),
+      firstname: new FormControl(this.user.firstname),
+      lastname: new FormControl(this.user.lastname),
+      pseudoname: new FormControl(this.user.pseudoname),
+      city: new FormControl(this.user.address.city),
+      state: new FormControl(this.user.address.state),
+      streetname: new FormControl(this.user.address.streetname),
+      streetnumber: new FormControl(this.user.address.streetnumber),
+      zipcode: new FormControl(this.user.address.zipcode),
+      areaCodeThree: new FormControl(this.user.phoneNumber.areaCodeThree),
+      blockThree: new FormControl(this.user.blockThree),
+      blockFour: new FormControl(this.user.phoneNumber.blockFour)
+    });
     this.changeDetails = true;
   }
 
@@ -76,29 +72,32 @@ export class UserAccountComponent implements OnInit {
   onSubmit() {
     this.updateUser = {
       mpuid: this.editUserForm.value.mpuid,
-      firstname: this.editUserForm.value.firstName,
-      lastname: this.editUserForm.value.lastName,
-      pseudoname: this.editUserForm.value.pseudoName,
+      firstname: this.editUserForm.value.firstname,
+      lastname: this.editUserForm.value.lastname,
+      pseudoname: this.editUserForm.value.pseudoname,
       address: {
         city: this.editUserForm.value.city,
         state: this.editUserForm.value.state,
-        streetName: this.editUserForm.value.streetName,
-        streetNumber: this.editUserForm.value.streetName,
-        zipCode: this.editUserForm.value.zipcode
+        streetname: this.editUserForm.value.streetname,
+        streetnumber: this.editUserForm.value.streetnumber,
+        zipcode: this.editUserForm.value.zipcode
       },
       phoneNumber: {
         id: this.editUserForm.value.phoneid,
         areaCodeThree: this.editUserForm.value.areaCodeThree,
-        blockFour: this.editUserForm.value.blockThree,
-        blockThree: this.editUserForm.value.blockFour
+        blockThree: this.editUserForm.value.blockThree,
+        blockFour: this.editUserForm.value.blockFour
       },
       creditCard: {
-        Balance: this.editUserForm.value.balance
+        balance: this.editUserForm.value.balance
       },
       newMessage: this.editUserForm.value.newMessage
     };
-    this.marketPlaceUserService.updateUser(this.updateUser).subscribe((Response) => {
+    this.marketPlaceUserService.updateUser(this.updateUser).subscribe((Response: MarketPlaceUser) => {
       this.user = Response;
+      console.log(Response);
+      this.marketPlaceUser.changeMarketPlaceUser(Response);
     });
+    this.changeDetails = false;
   }
 }

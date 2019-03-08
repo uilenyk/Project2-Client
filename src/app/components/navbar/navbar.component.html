@@ -13,110 +13,102 @@
       <div class="max-tag-message" *ngIf="atMaxTags()">
         Maximum number of tags reached.
       </div>
-</div>
-<button (click)="searchListings()" class="btn btn-outline-success my-2 my-sm-0">Search</button>
-<div class="max-tag-message" *ngIf="atMaxTags()">
-  Maximum number of tags reached.
-</div>
-<div class="chips">
-  <div class="chip" *ngFor="let tag of tags">
-    {{tag}}
-    <em class="fas fa-times" (click)="deleteTag(tag)"></em>
-  </div>
-  </form>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="chips">
+        <div class="chip" *ngFor="let tag of tags">
+          {{tag}}
+          <i class="fas fa-times" (click)="deleteTag(tag)"></i>
+        </div>
+      </div>
+    </form>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Your Listings">
+          <i (click)="loadUserListings()" class="fas fa-cart-plus fa-2x m-2"></i>
+        </li>
+        <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Messages">
+          <i (click)="loadMessages()" class="fas fa-comments  fa-2x m-2"></i>
+        </li>
+        <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Friends">
+          <i routerLink="friends" class="fas fa-address-book fa-2x m-2"></i>
+        </li>
+      </ul>
+    </div>
     <ul class="navbar-nav mr-auto">
-      <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Your Listings">
-        <i (click)="loadUserListings()" class="fas fa-cart-plus fa-2x m-2"></i>
-      </li>
-      <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Messages">
-        <i (click)="loadMessages()" class="fas fa-comments  fa-2x m-2"></i>
-      </li>
-      <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Friends">
-        <i routerLink="friends" class="fas fa-address-book fa-2x m-2"></i>
-      </li>
-    </ul>
-  </div>
-  </form>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li *ngIf="!showSignIn" class="nav-item dropdown">
+      <li class="nav-item dropdown shiftLeft">
+        <a class="nav-link fas fa-ellipsis-v fa-2x m-2" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          {{username}}
+        </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <button (click)="loadUserListings()" class="dropdown-item">Your Listings</button>
+          <button *ngIf="!showSignIn" (click)="signOut()" name="button" class="dropdown-item btn login_btn btnSize">Sign
+            Out</button>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Friends</a>
+          <button *ngIf="!showSignIn" (click)="editAccount()" name="button"
+            class="dropdown-item btn login_btn btnSize">My Account</button>
+          <div class="dropdown-divider"></div>
+          <button *ngIf="showSignIn" (click)="signIn()" name="button" class="dropdown-item btn login_btn btnSize">Sign
+            In</button>
           <div class="dropdown-divider"></div>
           <button *ngIf="showSignIn" routerLink="signUp" name="button" class="dropdown-item btn login_btn btnSize">Sign
             Up</button>
-          <button class="dropdown-item nav-link" href="user-account">My Account</button>
         </div>
-      </li>
 
-      <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Your Listings">
-        <em (click)="addListing()" class="fas fa-cart-plus fa-2x m-2"></em>
-      </li>
-      <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Messages">
-        <em (click)="messages()" class="fas fa-comments  fa-2x m-2"></em>
-      </li>
-      <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Friends">
-        <em (click)="goToFriends()" class="fas fa-address-book fa-2x m-2"></em>
       </li>
     </ul>
-    </nav>
-    <app-login *ngIf="showSignInView" (showSignEvent)="recieveShowSignInEvent($event)"></app-login>
-    <div *ngIf="listings" class="container ride-sideNav">
-      <table class="table table-bordered table-hover">
-        <th>Active</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Expires</th>
-        <th></th>
-        <tr *ngFor="let list of listings">
-          <td>{{list.active}}</td>
-          <td>{{list.name}}</td>
-          <td>{{list.description}}</td>
-          <td>{{list.price}}</td>
-          <td>{{list.timeout | date: 'dd/MM/yyyy'}}</td>
-          <td>
-            <button *ngIf="marketPlaceUser" (click)="buyListing(list)" class="btn btn-outline-success actions"> <span
-                class="ml-1">Buy</span></button>
-            <button *ngIf="marketPlaceUser" (click)="open(content, list)" class="btn btn-outline-success actions"> <span
-                class="ml-1">Message</span></button>
-          </td>
-        </tr>
-      </table>
+  </nav>
+  <app-login *ngIf="showSignInView" (showSignEvent)="recieveShowSignInEvent($event)"></app-login>
+  <div *ngIf="listings" class="container ride-sideNav">
+    <table class="table table-bordered table-hover">
+      <th>Active</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Expires</th>
+      <th></th>
+      <tr *ngFor="let list of listings">
+        <td>{{list.active}}</td>
+        <td>{{list.name}}</td>
+        <td>{{list.description}}</td>
+        <td>{{list.price}}</td>
+        <td>{{list.timeout | date: 'dd/MM/yyyy'}}</td>
+        <td>
+          <button *ngIf="marketPlaceUser" (click)="buyListing(list)" class="btn btn-outline-success actions"> <span
+              class="ml-1">Buy</span></button>
+          <button *ngIf="marketPlaceUser" (click)="open(content, list)" class="btn btn-outline-success actions"> <span
+              class="ml-1">Message</span></button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-
-    <ng-template #content let-modal>
-      <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="messageForm" novalidate>
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <div class="input-group">
-              <input class="form-control" name="subject" placeholder="Subject" formControlName="subject" required>
-            </div>
+    <div class="modal-body">
+      <form [formGroup]="messageForm" novalidate>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <div class="input-group">
+            <input class="form-control" name="subject" placeholder="Subject" formControlName="subject" required>
           </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <div class="input-group">
-              <textarea rows="4" cols="50" class="form-control" name="message" placeholder="Message"
-                formControlName="content" required></textarea>
-            </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <div class="input-group">
+            <textarea rows="4" cols="50" class="form-control" name="message" placeholder="Message"
+              formControlName="content" required></textarea>
           </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="messageOwner()">Send</button>
-      </div>
-    </ng-template>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="messageOwner()">Send</button>
+    </div>
+  </ng-template>
 
-    <hr>
+  <hr>
 
-    <pre>{{closeResult}}</pre>
+  <pre>{{closeResult}}</pre>

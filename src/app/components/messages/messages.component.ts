@@ -43,7 +43,6 @@ export class MessagesComponent implements OnInit {
     this.userId = this.cookie.get('mpuid');
   }
 
-<<<<<<< HEAD
   open(content, message) {
     this.modalService.open(content);
     this.messageForm = this.createMessageForm();
@@ -75,39 +74,7 @@ export class MessagesComponent implements OnInit {
     this.path = path;
     this.messages = [];
     this.messageService.getMessages(this.userId, path)
-=======
-  // sentMessages() {
-  //   this.messages = [];
-  //   this.messageService.getSentMessages(this.userId)
-  //     .subscribe((payload) => {
-  //       console.log(payload);
-  //       for (const key in payload) {
-  //         if (payload.hasOwnProperty(key)) {
-  //           this.messages = payload;
-  //         }
-  //       }
-  //     },
-  //       (error) => console.log(error));
-  //   }
 
-  // recievedMessages() {
-  //   this.messages = [];
-  //   this.messageService.getRecievedMessages(this.userId)
-  //     .subscribe((payload) => {
-  //       console.log(payload);
-  //       for (const key in payload) {
-  //         if (payload.hasOwnProperty(key)) {
-  //           this.messages = payload;
-  //         }
-  //       }
-  //     },
-  //       (error) => console.log(error));
-  // }
-
-  fetchMessages(type: string) {
-    this.messages = [];
-    this.messageService.getMessages(this.userId, type)
->>>>>>> EvaineDemoBranch
       .subscribe((payload) => {
         console.log(payload);
         for (const key in payload) {
