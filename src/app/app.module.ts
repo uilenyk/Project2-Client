@@ -1,9 +1,15 @@
+import { NgSelectModule } from '@ng-select/ng-select';
 import { MarketPageComponent } from './components/market-page/market-page.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListingModule } from '../app/module/listing.module';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material';
+import { MatSortModule } from '@angular/material';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -20,7 +26,10 @@ import { AddListingComponent } from './components/add-listing/add-listing.compon
 import { PhotoComponent } from './components/photo/photo.component';
 import { PhotoService } from './services/photo.service';
 import { MessagesComponent } from './components/messages/messages.component';
+
+import { ListingComponent } from './components/listing/listing.component';
 import { UserAccountComponent } from './components/user-account/user-account.component';
+
 
 
 @NgModule({
@@ -35,7 +44,9 @@ import { UserAccountComponent } from './components/user-account/user-account.com
     AddListingComponent,
     PhotoComponent,
     MessagesComponent,
+    ListingComponent,
     UserAccountComponent
+
   ],
   imports: [
     FormsModule,
@@ -49,7 +60,13 @@ import { UserAccountComponent } from './components/user-account/user-account.com
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgSelectModule,
+    ListingModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatGridListModule
   ],
   providers: [CookieService, PhotoService],
   bootstrap: [AppComponent],

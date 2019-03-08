@@ -104,7 +104,7 @@ export class RestAPIService {
     }
 
     addListing(listing) {
-        const url = `${this.apiURL}/tags`;
+        const url = `${this.apiURL}/listings`;
         return this.httpClient.post(url, listing);
     }
 

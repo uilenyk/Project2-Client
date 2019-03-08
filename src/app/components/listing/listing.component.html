@@ -1,0 +1,186 @@
+<!-- Profile Modal -->
+<ng-template #contentowner let-modal>
+    <div class="modal-header">
+        <i class="fas fa-user-circle fa-2x"></i>
+        <h4 class="modal-title" id="modal-basic-title">Profile</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <!-- {{owner | json}} -->
+        <div class="card">
+            <img class="card-img-top"
+                src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/bologna-1.jpg"
+                alt="Bologna">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">{{owner.pseudoname}}</h6>
+                <p class="card-text">
+                    It is the seventh most populous city in Italy, at the heart of a metropolitan area
+                    of about one million people.
+                </p>
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Go To Login</a>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close')">Close</button>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Tag Modal -->
+<ng-template #contentags let-modal>
+    <div class="modal-header">
+        <i class="fas fa-tags fa-3x"></i>
+        <h4 class="modal-title" id="modal-basic-title">Tags</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm" *ngIf="tags">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let tag of tags">
+                                <td> <i class="fas fa-tags fa-2x"></i></td>
+                                <td>{{tag.tagName}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- {{tags | json}} -->
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!-- Buyers Receipt Modal -->
+<ng-template #buyersReceiptContent let-modal>
+    <div class="modal-header">
+        <!-- <i class="fas fa-tags fa-3x"></i> -->
+        <h4 class="modal-title" id="modal-basic-title">Buyers Receipt</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="card">
+            <div class="card-body">
+                <p>
+                    Thank you for buying the product
+                </p>
+                <!-- {{buyersReceipt |json}} -->
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<div>
+    <input class="form-control" matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tbody>
+            <ng-container matColumnDef="icon">
+                <th mat-header-cell *matHeaderCellDef> icon </th>
+                <td mat-cell *matCellDef="let element">
+                    <mat-grid-list cols="1" rowHeight="1:1">
+                        <mat-grid-tile>
+                            <!-- <img src="./assets/img/placeholder.png" class="img-thumbnail rounded" alt="Responsive image"> -->
+                            <i class="fas fa-user-circle fa-2x"></i>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="owner">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> owner </th>
+                <td mat-cell *matCellDef="let element">
+                    <h6>
+                        <p class="text-primary">{{element.owner.pseudoname}}</p>
+                    </h6>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> name </th>
+                <td mat-cell *matCellDef="let element">
+                    <h6>{{element.name}}</h6>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> description </th>
+                <td mat-cell *matCellDef="let element">
+                    <h6>{{element.description}}</h6>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="price">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> price </th>
+                <td mat-cell *matCellDef="let element">
+                    <h6>
+                        <p class="text-success">
+                            <i class="fas fa-dollar-sign"></i>
+                            {{element.price | number}}
+                        </p>
+                    </h6>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> action </th>
+                <td mat-cell *matCellDef="let element">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button class="btn btn-sm btn-outline-primary" (click)="viewOwner(contentowner, element)">View
+                            Owner</button>
+                        <button class="btn btn-sm btn btn-outline-info" (click)="viewTags(contentags, element)">View
+                            Tags</button>
+                        <button *ngIf="marketPlaceUser" (click)="buyListing(buyersReceiptContent, element)"
+                            class="btn btn-outline-success actions"> <span class="ml-1">Buy</span></button>
+                        <button *ngIf="marketPlaceUser" (click)="open(content, element)"
+                            class="btn btn-outline-success actions"> <span class="ml-1">Message</span></button>
+                    </div>
+                </td>
+            </ng-container>
+        </tbody>
+    </table>
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator> -->
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Message</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="messageForm" novalidate>
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <div class="input-group">
+                    <input class="form-control" name="subject" placeholder="Subject" formControlName="subject" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <div class="input-group">
+                    <textarea rows="4" cols="50" class="form-control" name="message" placeholder="Message"
+                        formControlName="content" required></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="messageOwner()">Send</button>
+    </div>
+</ng-template>

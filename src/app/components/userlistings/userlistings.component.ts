@@ -65,11 +65,15 @@ export class UserlistingsComponent implements OnInit {
   }
 
   updateListing(listing: any) {
-    if (this.action === '1') {
+
+    
+    if (this.action == '1') {
+
       this.editListing(listing);
     } else if (this.action === '2') {
       this.changeListing(listing);
     }
+    this.action = "Update Listing";
   }
 
   addListing() {

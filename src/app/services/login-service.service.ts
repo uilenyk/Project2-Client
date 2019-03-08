@@ -10,8 +10,9 @@ export class LoginService {
 
     constructor(private restAPIService: RestAPIService) { }
 
-    login(loginRequest): Observable<any> {
-        return this.restAPIService.login(loginRequest);
+    login(userData: any): Observable<any> {
+        return this.restAPIService.login(userData);
+
     }
 
     signUp(formData: any) {

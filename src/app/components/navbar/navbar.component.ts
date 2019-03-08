@@ -9,7 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'app-navbar, app-listing',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
@@ -44,7 +44,6 @@ export class NavbarComponent implements OnInit {
   buyListing(listing: any) {
     this.id = this.cookie.get('mpuid');
     this.listingService.buyListing(this.id, listing).subscribe((response) => { });
-    // this.messageService.sendMessage(this.id, this.username, this.newMessage).subscribe((response) => { });
   }
 
   private createMessageForm(): FormGroup {
@@ -55,6 +54,9 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  loadListings(){
+    this.router.navigateByUrl('loadListings');
+  }
   messageOwner() {
     this.id = this.cookie.get('mpuid');
     this.messageForm.patchValue({ sender: this.marketPlaceUser });
@@ -79,6 +81,11 @@ export class NavbarComponent implements OnInit {
     window.location.reload();
   }
 
+  editAccount(){
+    this.listings = null;
+    this.router.navigateByUrl('user-account');
+  }
+
   signIn() {
     if (this.showSignInView === false) {
       this.showSignInView = true;
@@ -95,14 +102,7 @@ export class NavbarComponent implements OnInit {
 
       for (const key in payload) {
         if (payload.hasOwnProperty(key)) {
-          //   if (payload.tags == this.tags[0]) {
-          //     this.listings = payload;
-          //  }
-          // this.tags.values;
-          // data.location //data beings just some variable
-          // this.dataSource.data = payload;
 
-          // get owner from this payload to use for sending and buying
           this.listings = payload;
         }
       }
