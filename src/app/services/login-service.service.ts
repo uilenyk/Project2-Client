@@ -12,9 +12,11 @@ export class LoginService {
 
     login(userData: any): Observable<any> {
         return this.restAPIService.login(userData);
+
     }
 
     signUp(formData: any) {
+        console.log(formData);
         return this.restAPIService.signUp(formData);
     }
 }

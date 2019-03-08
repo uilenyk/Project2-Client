@@ -9,7 +9,7 @@ import { MarketPlaceUserDataService } from './services/market-place-user-data.se
 })
 export class RouteAuth implements CanActivate {
 
-   
+
     constructor(
         private marketPlaceUser: MarketPlaceUserDataService,
         private router: Router
@@ -21,16 +21,16 @@ export class RouteAuth implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): boolean {
         console.log(this.marketPlaceUser);
-        
-        this.marketPlaceUser.currentMarketPlaceUser.subscribe((user) => {
-           if(user != null) {
 
-            this.isLogged = true; }
-        else {
-            this.isLogged = false;
-        }
+        this.marketPlaceUser.currentMarketPlaceUser.subscribe((user) => {
+            if (user != null) {
+
+                this.isLogged = true;
+            } else {
+                this.isLogged = false;
+            }
         });
-       
+
         return this.isLogged;
     }
 }

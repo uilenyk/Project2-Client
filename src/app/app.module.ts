@@ -2,6 +2,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { MarketPageComponent } from './components/market-page/market-page.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListingModule } from '../app/module/listing.module';
 import { MatTableModule } from '@angular/material/table';
@@ -13,9 +15,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LandingComponent } from './components/landing/landing.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { SearchComponent } from './components/search/search.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -25,9 +26,10 @@ import { AddListingComponent } from './components/add-listing/add-listing.compon
 import { PhotoComponent } from './components/photo/photo.component';
 import { PhotoService } from './services/photo.service';
 import { MessagesComponent } from './components/messages/messages.component';
-import { ListingComponent } from './components/listing/listing.component';
 
-// import { UserAccountComponent } from './components/user-account/user-account.component';
+import { ListingComponent } from './components/listing/listing.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
+
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { ListingComponent } from './components/listing/listing.component';
     AddListingComponent,
     PhotoComponent,
     MessagesComponent,
-    ListingComponent
+    ListingComponent,
+    UserAccountComponent
+
   ],
   imports: [
     FormsModule,

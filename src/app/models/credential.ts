@@ -1,5 +1,7 @@
+import { MarketPlaceUser } from './market-place-user';
+
 export class Credential {
     email: string;
-    username: string;
+    user: MarketPlaceUser;
     password: string;
 }

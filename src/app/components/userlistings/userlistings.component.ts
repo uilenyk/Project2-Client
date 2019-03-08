@@ -12,10 +12,10 @@ import { MarketPlaceUserDataService } from 'src/app/services/market-place-user-d
 })
 export class UserlistingsComponent implements OnInit {
   constructor
-    (private listingService: ListingsService,
-      private cookie: CookieService,
-      private router: Router,
-      private marketPlaceUser: MarketPlaceUserDataService
+   (private listingService: ListingsService,
+     private cookie: CookieService,
+     private router: Router,
+     private marketPlaceUser: MarketPlaceUserDataService
     ) { }
 
   listings: any;
@@ -36,7 +36,7 @@ export class UserlistingsComponent implements OnInit {
   }
 
   /**
-   * 
+   *
    * @param listing
    * Change listing from selection
    */
@@ -65,15 +65,16 @@ export class UserlistingsComponent implements OnInit {
   }
 
   updateListing(listing: any) {
+
     
     if (this.action == '1') {
+
       this.editListing(listing);
-    } else if (this.action == '2') {
+    } else if (this.action === '2') {
       this.changeListing(listing);
     }
     this.action = "Update Listing";
   }
-
 
   addListing() {
     this.listings = null;
@@ -92,8 +93,10 @@ export class UserlistingsComponent implements OnInit {
       },
         (error) => console.log(error));
   }
+
   recieveAddListingEvent(object) {
     this.showAddListing = object.showAddListing;
   }
+
 
 }

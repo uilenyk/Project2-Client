@@ -118,6 +118,7 @@ export class AddListingComponent implements OnInit {
           console.log(payload);
           this.listid = payload.listid;
         }, (error) => console.log(error));
+
       this.router.navigateByUrl('');
     } else {
       alert('Invalid form!');

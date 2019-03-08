@@ -9,7 +9,7 @@ import { UserlistingsComponent } from './components/userlistings/userlistings.co
 import { PhotoComponent } from './components/photo/photo.component';
 import { RouteAuth } from 'src/app/routeAuth';
 import { switchMap } from 'rxjs/operators';
-// import { UserAccountComponent } from './components/user-account/user-account.component';
+import { UserAccountComponent } from './components/user-account/user-account.component';
 
 
 
@@ -28,12 +28,16 @@ const routes: Routes = [
     path: 'signUp',
     component: SignupComponent
   }, {
-      path: 'userlistings',
-      component: UserlistingsComponent
+    path: 'userlistings',
+    component: UserlistingsComponent
   }, {
-      path: 'messages',
-      component: MessagesComponent
+    path: 'messages',
+    component: MessagesComponent
+  }, {
+    path: 'user-account',
+    component: UserAccountComponent
   }
+
   , {
     path: 'loadListings',
     component: ListingComponent
@@ -42,6 +46,7 @@ const routes: Routes = [
   //   path: 'user-account',
   //   component: UserAccountComponent
   // }
+
 ];
 
 @NgModule({

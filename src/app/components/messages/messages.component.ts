@@ -74,6 +74,7 @@ export class MessagesComponent implements OnInit {
     this.path = path;
     this.messages = [];
     this.messageService.getMessages(this.userId, path)
+
       .subscribe((payload) => {
         console.log(payload);
         for (const key in payload) {

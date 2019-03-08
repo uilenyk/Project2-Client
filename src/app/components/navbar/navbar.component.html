@@ -1,4 +1,5 @@
 <div>
+
     <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light my-8">
       <button routerLink="/" class="btn btn-link homeBtnSize">Marketplace</button>
       <form class="form-inline my-2 my-lg-0">
@@ -12,28 +13,23 @@
         <button (click)="loadListings()" class="btn btn-outline-success my-2 my-sm-0">Search</button>
         <div class="max-tag-message" *ngIf="atMaxTags()">
           Maximum number of tags reached.
+
         </div>
-        <div class="chips">
-          <div class="chip" *ngFor="let tag of tags">
-            {{tag}}
-            <i class="fas fa-times" (click)="deleteTag(tag)"></i>
-          </div>
-        </div>
-      </form>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Your Listings">
-            <i (click) ="loadUserListings()" class="fas fa-cart-plus fa-2x m-2"></i>
-          </li>
-          <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Messages">
-              <i (click)="loadMessages()" class="fas fa-comments  fa-2x m-2"></i>
-            </li>
-          <li *ngIf="!showSignIn" class="nav-link" data-toggle="tooltip" title="Friends">
-            <i routerLink="friends" class="fas fa-address-book fa-2x m-2"></i>
-          </li>
-        </ul>
       </div>
+      <button (click)="searchListings()" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+      <div class="max-tag-message" *ngIf="atMaxTags()">
+        Maximum number of tags reached.
+      </div>
+      <div class="chips">
+        <div class="chip" *ngFor="let tag of tags">
+          {{tag}}
+          <i class="fas fa-times" (click)="deleteTag(tag)"></i>
+        </div>
+      </div>
+    </form>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
+
         <li class="nav-item dropdown shiftLeft">
           <a class="nav-link fas fa-ellipsis-v fa-2x m-2" id="navbarDropdown" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,29 +50,6 @@
     </nav>
     <app-login *ngIf="showSignInView" (showSignEvent)="recieveShowSignInEvent($event)"></app-login>
    
-  <!-- <div *ngIf="listings" class="container ride-sideNav">
-    <table class="table table-bordered table-hover">
-      <th>Active</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Expires</th>
-      <th></th>
-      <tr *ngFor="let list of listings">
-      <td>{{list.active}}</td> 
-      <td>{{list.name}}</td>  
-      <td>{{list.description}}</td>  
-      <td>{{list.price}}</td> 
-      <td>{{list.timeout | date: 'dd/MM/yyyy'}}</td> 
-      <td>
-          <button *ngIf="marketPlaceUser" (click)="buyListing(list)" class="btn btn-outline-success actions"> <span class="ml-1">Buy</span></button>
-          <button  *ngIf="marketPlaceUser" (click)="open(content, list)" class="btn btn-outline-success actions"> <span class="ml-1">Message</span></button>
-      </td>   
-      </tr>
-        </table>
-        </div>
-      -->
-
         <ng-template #content let-modal>
             <div class="modal-header">
               <h4 class="modal-title" id="modal-basic-title">Message</h4>
@@ -105,6 +78,6 @@
             </div>
           </ng-template>
           
-          <hr>
+         
           
-          <pre>{{closeResult}}</pre>
+          

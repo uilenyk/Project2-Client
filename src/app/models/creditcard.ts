@@ -1,3 +1,3 @@
 export class CreditCard {
-    Balance: number;
+    balance: number;
 }

@@ -15,9 +15,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class NavbarComponent implements OnInit {
 
-  isDeleted: boolean = false;
-  currentTag: string = '';
-  maxTags: boolean = false;
+  isDeleted = false;
+  currentTag = '';
+  maxTags = false;
   tags: Array<string> = [];
   showSignIn = true;
   showSignInView = false;
@@ -102,6 +102,7 @@ export class NavbarComponent implements OnInit {
 
       for (const key in payload) {
         if (payload.hasOwnProperty(key)) {
+
           this.listings = payload;
         }
       }
@@ -125,7 +126,7 @@ export class NavbarComponent implements OnInit {
 
 
   deleteTag(tag: string) {
-    this.tags.splice(this.tags.indexOf(tag), 1)
+    this.tags.splice(this.tags.indexOf(tag), 1);
   }
 
   addTag(tag: string) {
@@ -135,9 +136,12 @@ export class NavbarComponent implements OnInit {
     this.currentTag = '';
   }
 
+  editAccount(){
+    this.router.navigateByUrl('user-account');
+  }
 
   atMaxTags(): boolean {
-    if (this.tags.length == 2) {
+    if (this.tags.length === 2) {
       return true;
     } else {
       return false;
