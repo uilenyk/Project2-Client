@@ -62,6 +62,9 @@ export class NavbarComponent implements OnInit {
     this.router.navigateByUrl('messages');
   }
 
+  editAccount() {
+    this.router.navigateByUrl('user-account');
+  }
   signOut() {
     this.cookie.deleteAll();
     this.router.navigateByUrl('');

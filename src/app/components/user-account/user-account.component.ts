@@ -8,6 +8,7 @@ import { Address } from 'src/app/models/address';
 import { PhoneNumber } from 'src/app/models/phonenumber';
 import { CreditCard } from 'src/app/models/creditcard';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MarketPlaceUserDataService } from 'src/app/services/market-place-user-data.service';
 
 @Component({
   selector: 'app-user-account',
@@ -25,9 +26,15 @@ export class UserAccountComponent implements OnInit {
     private marketPlaceUserService: MarketPlaceUserService,
     private cookie: CookieService,
     private router: Router,
+    private marketPlaceUser: MarketPlaceUserDataService
   ) { }
 
   ngOnInit() {
+    this.marketPlaceUser.currentMarketPlaceUser.subscribe((user) => {
+      if (user == null) {
+        this.router.navigateByUrl('login');
+      }
+    });
     this.changeDetails = false;
     this.marketPlaceUserService.getUser(this.cookie.get('mpuid')).subscribe((Response) => {
       this.user = Response;

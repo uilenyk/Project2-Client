@@ -52,6 +52,8 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <button *ngIf="!showSignIn" (click)="signOut()" name="button" class="dropdown-item btn login_btn btnSize">Sign
             Out</button>
+            <button *ngIf="!showSignIn" (click)="editAccount()" name="button" class="dropdown-item btn login_btn btnSize">Edit Account
+              </button>
           <div class="dropdown-divider"></div>
           <button *ngIf="showSignIn" (click)="signIn()" name="button" class="dropdown-item btn login_btn btnSize">Sign
             In</button>
